@@ -1,0 +1,32 @@
+/* Filter.css */
+
+.filter-container {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .filter-select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 14px;
+  }
+  
+  /* Add some spacing between filters */
+  .filter-section:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  
