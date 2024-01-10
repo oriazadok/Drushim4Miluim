@@ -1,5 +1,7 @@
 import React ,{useState} from 'react';
 import '../style/VolunterSearchProfile.css'; // Import the CSS file
+import Filter from '../components/Filter';
+
 
 const BluePage = () => {
   const [showFilters, setShowFilters] = useState(false);
@@ -18,13 +20,7 @@ const BluePage = () => {
         Filter
       </button>
       {showFilters && (
-        <div className="filter-options">
-          {/* Add your filter components for different categories here */}
-          <FilterComponent category="Category 1" />
-          <FilterComponent category="Category 2" />
-          <FilterComponent category="Category 3" />
-          {/* Add more as needed */}
-        </div>
+        <Filter/>
       )}
     </div>
   );
