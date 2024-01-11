@@ -7,7 +7,7 @@ const Header = () => {
 
   return (
     <div className='navbar'>
-      <Link to="/recruiter_profile" className='profile-link'>
+      <Link to="/recruiter" className='profile-link'>
         <button className='profile-button'>Profile</button>
       </Link>
       <Link to="/signin">
