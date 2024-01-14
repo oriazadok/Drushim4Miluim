@@ -3,14 +3,22 @@ import AddPosition from '../components/AddPosition';
 import Filter from '../components/Filter';
 import FilteredData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
+// import '../style/Recruiter.css';
 
-const RecruiterProfile = () => {
+const Recruiter = () => {
   const [showAddPosition, setShowAddPosition] = useState(false);
+  const [positionAdded, setPositionAdded] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [filterData, setFilterData] = useState({});
 
   const toggleAddPosition = () => {
     setShowAddPosition(!showAddPosition);
+    setPositionAdded(false);
+  };
+
+  const handlePositionAdded = () => {
+    setShowAddPosition(!showAddPosition);
+    setPositionAdded(true); // Set the state when the position is added
   };
 
   const toggleFilter = () => {
@@ -22,28 +30,34 @@ const RecruiterProfile = () => {
   };
 
   return (
-    <div>
-      RecruiterProfile
-      <br />
+    <div className="recruiter-profile-container">
+      <h1 className="profile-heading">Hello Recruiter</h1>
+      <div className="button-container">
+        <button className="toggle-button" onClick={toggleAddPosition}>
+          Add Position
+        </button>
+        {showAddPosition && !positionAdded && (
+          <AddPosition onPositionAdded={handlePositionAdded} />
+        )}
+      </div>
 
-      {/* This is a toggle button for the add position component */}
-      <button onClick={toggleAddPosition}>Add Position</button>
-      {showAddPosition && <AddPosition />}
-      <br />
+      <div className="button-container">
+        {/* Toggle button for filter */}
+        <button className="toggle-button" onClick={toggleFilter}>
+          Toggle Filter
+        </button>
 
-      {/* Toggle button for filter */}
-      <button onClick={toggleFilter}>Toggle Filter</button>
-
-      {/* Render either Filter or FilteredData based on showFilter state */}
-      {showFilter ? (
-        <Filter onFilterChange={handleFilterChange} />
-      ) : (
-        <FilteredData data={filterData} />
-      )}
+        {/* Render either Filter or FilteredData based on showFilter state */}
+        {showFilter ? (
+          <Filter onFilterChange={handleFilterChange} />
+        ) : (
+          <FilteredData data={filterData} />
+        )}
+      </div>
 
       <Volunteers />
     </div>
   );
 };
 
-export default RecruiterProfile;
+export default Recruiter;

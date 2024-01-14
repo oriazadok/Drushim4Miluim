@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import "../style/AddPosition.css"
 
-const AddPosition = () => {
-  const [formData, setFormData] = useState({
+const AddPosition = ({ onPositionAdded }) => {
+  const [positionData, setFormData] = useState({
     positionTitle: '',
     companyName: '',
     jobDescription: '',
@@ -11,15 +11,39 @@ const AddPosition = () => {
 
   const handleChange = (e) => {
     setFormData({
-      ...formData,
+      ...positionData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    try {
+      const response = await fetch('http://localhost:3001/api/addPosition', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Send cookies (credentials) with the request
+        body: JSON.stringify(positionData),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      // Parse the response JSON
+      const responseData = await response.json();
+  
+      // Log the response from the server
+      console.log('Server Response:', responseData.message);
+      if(responseData.message === 'success') {
+        onPositionAdded();
+        window.alert("added position");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -31,7 +55,7 @@ const AddPosition = () => {
           type="text"
           id="positionTitle"
           name="positionTitle"
-          value={formData.positionTitle}
+          value={positionData.positionTitle}
           onChange={handleChange}
           required
         /><br/>
@@ -41,7 +65,7 @@ const AddPosition = () => {
           type="text"
           id="companyName"
           name="companyName"
-          value={formData.companyName}
+          value={positionData.companyName}
           onChange={handleChange}
           required
         /><br/>
@@ -50,12 +74,12 @@ const AddPosition = () => {
         <textarea
           id="jobDescription"
           name="jobDescription"
-          value={formData.jobDescription}
+          value={positionData.jobDescription}
           onChange={handleChange}
           required
         ></textarea><br/>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Add Position</button>
       </form>
     </div>
   );
