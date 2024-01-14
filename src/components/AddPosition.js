@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import "../style/AddPosition.css"
 
-const AddPosition = ({ onPositionAdded }) => {
+const AddPosition = ({ onPositionAdded, onCancel }) => {
   const [positionData, setFormData] = useState({
     positionTitle: '',
     companyName: '',
@@ -46,6 +46,10 @@ const AddPosition = ({ onPositionAdded }) => {
     }
   };
 
+  const handleCancel = () => {
+    onCancel();
+  };
+
   return (
     <div className="add-position-container">
       <h2>Add New Position</h2>
@@ -80,6 +84,10 @@ const AddPosition = ({ onPositionAdded }) => {
         ></textarea><br/>
 
         <button type="submit">Add Position</button>
+        {/* "Cancel" button */}
+        <button type="button" onClick={handleCancel}>
+          Cancel
+        </button>
       </form>
     </div>
   );

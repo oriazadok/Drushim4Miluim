@@ -1,10 +1,9 @@
+// Filter.js
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import '../style/Filter.css';
 
-const Filter = ({ onFilterChange, handleFilter, initialFilters }) => {
-
+const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
   const [filter1Value, setFilter1Value] = useState(initialFilters.filter1 || '');
   const [filter2Value, setFilter2Value] = useState(initialFilters.filter2 || '');
   const [filter3Value, setFilter3Value] = useState(initialFilters.filter3 || '');
@@ -111,19 +110,17 @@ const Filter = ({ onFilterChange, handleFilter, initialFilters }) => {
         </select>
       </div>
 
-      <button onClick={handleFilter}>
-        Filter
-      </button>
-
-
+      <button onClick={handleFilter}>Filter</button>
+      {/* "Cancel" button */}
+      <button onClick={onCancel}>Cancel</button>
     </div>
-
   );
 };
 
 Filter.propTypes = {
   onFilterChange: PropTypes.func.isRequired,
   handleFilter: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
   initialFilters: PropTypes.object.isRequired,
 };
 

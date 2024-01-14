@@ -5,69 +5,94 @@ import Filter from '../components/Filter';
 import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
 
-// import '../style/Recruiter.css';
-
 const Recruiter = () => {
-  const [showAddPosition, setShowAddPosition] = useState(false);
-  const [positionAdded, setPositionAdded] = useState(false);
-  const [showFilter, setShowFilter] = useState(false);
-  const [filterData, setFilterData] = useState({
+  const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
+  const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
+  const [filterData, setFilterData] = useState({                   // Manage FilterData's data
     filter1: '',
     filter2: '',
     filter3: '',
     filter4: '',
   });
 
-
-  const toggleAddPosition = () => {
+  // This fuction handle the visibility of the button and the AddPosition component
+  const addPosition = () => {
     setShowAddPosition(!showAddPosition);
-    setPositionAdded(false);
+    setShowFilter(false); // Close filter when adding a position
   };
 
+  // This function transferred to the AddPosition component to handle adding position
   const handlePositionAdded = () => {
     setShowAddPosition(!showAddPosition);
-    setPositionAdded(true);
   };
 
-  const toggleFilter = () => {
-    setShowFilter(!showFilter);
+  // This function transferred to the AddPosition component to handle cancle the adding position
+  const handleCancelAddPosition = () => {
+    setShowAddPosition(false);
   };
 
+  // This function transferred to the Filter to save the filter's data
   const handleFilterChange = (filterName, value) => {
     setFilterData((prevData) => ({ ...prevData, [filterName]: value }));
   };
+
+  // This function transferred to the Filter to handle filtering
+  const filter = () => {
+    setShowFilter(!showFilter);
+    setShowAddPosition(false);    // Close AddPosition when showing filter
+  };
+
+  // This function transferred to the Filter to cancel the filter
+  const cancelFilter = () => {
+    setShowFilter(false);
+  };
+
+  // for case that there is no filtering to show
+  const shouldShowFilterData = Object.values(filterData).some((value) => value !== '');
 
   return (
     <div className="recruiter-profile-container">
       <h1 className="profile-heading">Hello Recruiter</h1>
       <div className="button-container">
-        <button className="toggle-button" onClick={toggleAddPosition}>
-          Add Position
-        </button>
-        {showAddPosition && !positionAdded && (
-          <AddPosition onPositionAdded={handlePositionAdded} />
+        {/* Visibility of "Add Position" button */}
+        {!showAddPosition && (
+          <button className="toggle-button" onClick={addPosition}>
+            Add Position
+          </button>
+        )}
+        
+        {/* Visibility of "Add Position" */}
+        {showAddPosition && (
+          <AddPosition
+            onPositionAdded={handlePositionAdded}
+            onCancel={handleCancelAddPosition}
+          />
         )}
       </div>
 
       <div className="button-container">
-        {/* Toggle button for filter */}
-        <button className="toggle-button" onClick={toggleFilter}>
-          Toggle Filter
-        </button>
+        {/* Visibility of "Filter" button */}
+        {!showFilter && (
+          <button className="toggle-button" onClick={filter}>
+            Filter
+          </button>
+        )}
 
-        {/* Render either Filter or FilteredData based on showFilter state */}
-        {showFilter ? (
-          <Filter
-            onFilterChange={handleFilterChange}
-            handleFilter={toggleFilter}
-            initialFilters={filterData}
-          />
-        ) : (
-          Object.values(filterData).some((value) => value !== '') && (
-            <FilterData data={filterData} />
-          )
+        {/* Visibility of "Filter" */}
+        {showFilter && (
+            <Filter
+              onFilterChange={handleFilterChange}
+              handleFilter={filter}
+              onCancel={cancelFilter}
+              initialFilters={filterData}
+            />
         )}
       </div>
+      
+      {/* Visibility of "FilterData" */}
+      {!showFilter && shouldShowFilterData && (
+        <FilterData data={filterData} />
+      )}
 
       <Volunteers />
     </div>

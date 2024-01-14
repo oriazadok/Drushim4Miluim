@@ -3,6 +3,7 @@ import React from 'react'
 import "../style/FilterData.css"
 
 const FilteredData = ({ data }) => {
+
   return (
     <div className="filtered-data-container">
       <h2>Filtered Data</h2>
