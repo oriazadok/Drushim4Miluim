@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import AddPosition from '../components/AddPosition';
 import Filter from '../components/Filter';
-import FilteredData from '../components/FilterData';
+import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
+
 // import '../style/Recruiter.css';
 
 const Recruiter = () => {
   const [showAddPosition, setShowAddPosition] = useState(false);
   const [positionAdded, setPositionAdded] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
-  const [filterData, setFilterData] = useState({});
+  const [filterData, setFilterData] = useState({
+    filter1: '',
+    filter2: '',
+    filter3: '',
+    filter4: '',
+  });
+
 
   const toggleAddPosition = () => {
     setShowAddPosition(!showAddPosition);
@@ -18,7 +26,7 @@ const Recruiter = () => {
 
   const handlePositionAdded = () => {
     setShowAddPosition(!showAddPosition);
-    setPositionAdded(true); // Set the state when the position is added
+    setPositionAdded(true);
   };
 
   const toggleFilter = () => {
@@ -49,9 +57,15 @@ const Recruiter = () => {
 
         {/* Render either Filter or FilteredData based on showFilter state */}
         {showFilter ? (
-          <Filter onFilterChange={handleFilterChange} />
+          <Filter
+            onFilterChange={handleFilterChange}
+            handleFilter={toggleFilter}
+            initialFilters={filterData}
+          />
         ) : (
-          <FilteredData data={filterData} />
+          Object.values(filterData).some((value) => value !== '') && (
+            <FilterData data={filterData} />
+          )
         )}
       </div>
 
