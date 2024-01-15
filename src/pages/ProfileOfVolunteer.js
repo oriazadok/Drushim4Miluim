@@ -1,18 +1,25 @@
 import React from 'react';
+import '../style/Profile.css'; 
 
-const ProfileOfVolunteer = ({ name, gender, age, phoneNumber, Email, skills, rovai, sadir, ptor}) => {
+const ProfileOfVolunteer = ({ name, gender, age, phoneNumber, email, skills, rovai, sadir, ptor }) => {
   return (
-    <div>
+    <div className="profile-container">
       <h2>Volunteer Profile</h2>
-      <p>Name: {name}</p>
-      <p>Gender: {gender}</p>
-      <p>Age: {age}</p>
-      <p>Phone Number: {phoneNumber}</p>
-      <p>Email: {Email}</p>
-      <p>Skills: {skills}</p>
-      <p>Rovai: {rovai}</p>
-      <p>Sadir: {sadir}</p>
-      <p>Ptor: {ptor}</p>
+      <div className="profile-details">
+        <div>
+          <p><strong>Name:</strong> {name}</p>
+          <p><strong>Gender:</strong> {gender}</p>
+          <p><strong>Age:</strong> {age}</p>
+          <p><strong>Phone Number:</strong> {phoneNumber}</p>
+          <p><strong>Email:</strong> {email}</p>
+        </div>
+        <div>
+          <p><strong>Skills:</strong> {skills}</p>
+          <p><strong>Rovai:</strong> {rovai}</p>
+          <p><strong>Sadir:</strong> {sadir}</p>
+          <p><strong>Ptor:</strong> {ptor}</p>
+        </div>
+      </div>
       {/* Add more details as needed */}
     </div>
   );

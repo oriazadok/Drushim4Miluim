@@ -1,16 +1,22 @@
 import React from 'react';
+import '../style/Profile.css'; 
 
-
-const ProfileOfRecruiter = ({ name, gender, age, phoneNumber, Email, unit }) => {
+const ProfileOfRecruiter = ({ name, gender, age, phoneNumber, email, unit }) => {
   return (
-    <div>
+    <div className="profile-container">
       <h2>Recruiter Profile</h2>
-      <p>Name: {name}</p>
-      <p>Gender: {gender}</p>
-      <p>Age: {age}</p>
-      <p>Phone Number: {phoneNumber}</p>
-      <p>Email: {Email}</p>
-      <p>Email: {unit}</p>
+      <div className="profile-details">
+        <div>
+          <p><strong>Name:</strong> {name}</p>
+          <p><strong>Gender:</strong> {gender}</p>
+          <p><strong>Age:</strong> {age}</p>
+          <p><strong>Phone Number:</strong> {phoneNumber}</p>
+          <p><strong>Email:</strong> {email}</p>
+        </div>
+        <div>
+          <p><strong>Unit:</strong> {unit}</p>
+        </div>
+      </div>
       {/* Add more details as needed */}
     </div>
   );
