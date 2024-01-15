@@ -1,0 +1,36 @@
+/* Add this style to your existing styles or create a new CSS file */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px;
+  }
+  
+  .navbar a, .navbar button {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+  }
+  
+  .navbar button {
+    font-size: 18px;
+  }
+  
+  /* Add a hover effect */
+  .navbar a:hover, .navbar button:hover {
+    background-color: #2980b9;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Add specific style for the notification icon */
+  .navbar button span {
+    font-size: 24px;
+  }
+  

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Recruiter from './pages/Recruiter';
+import RecruiterSearch from './pages/RecruiterSearch'
 
 function App() {
   // const [message, setMessage] = useState('');
@@ -35,6 +36,7 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/recruiter" element={<Recruiter />} />
+        <Route path="/recruiterSearch" element={<RecruiterSearch />} />
       </Routes>
     </Router>
   );
