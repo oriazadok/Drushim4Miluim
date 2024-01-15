@@ -9,10 +9,13 @@ const Recruiter = () => {
   const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
   const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
   const [filterData, setFilterData] = useState({                   // Manage FilterData's data
-    filter1: '',
-    filter2: '',
-    filter3: '',
-    filter4: '',
+    location: '',
+    service: '',
+    releaseDate: '',
+    rovai: '',
+    profile: '',
+    ageFrom: '',
+    ageTo: '',
   });
 
   // This fuction handle the visibility of the button and the AddPosition component
@@ -71,9 +74,7 @@ const Recruiter = () => {
       <div className="button-container">
         {/* Visibility of "Filter" button */}
         {!showFilter && (
-          <button className="toggle-button" onClick={filter}>
-            Filter
-          </button>
+          <button className="toggle-button" onClick={filter}>סנן</button>
         )}
 
         {/* Visibility of "Filter" */}

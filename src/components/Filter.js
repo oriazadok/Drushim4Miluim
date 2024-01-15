@@ -4,115 +4,179 @@ import PropTypes from 'prop-types';
 import '../style/Filter.css';
 
 const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
-  const [filter1Value, setFilter1Value] = useState(initialFilters.filter1 || '');
-  const [filter2Value, setFilter2Value] = useState(initialFilters.filter2 || '');
-  const [filter3Value, setFilter3Value] = useState(initialFilters.filter3 || '');
-  const [filter4Value, setFilter4Value] = useState(initialFilters.filter4 || '');
+  const [location, setLocation] = useState(initialFilters.location || '');
+  const [service, setService] = useState(initialFilters.service || '');
+  const [releaseDate, setReleaseDate] = useState(initialFilters.releaseDate || '');
+  const [rovai, setRovai] = useState(initialFilters.rovai || '');
+  const [profile, setProfile] = useState(initialFilters.profile || '');
+  const [ageFrom, setAgeFrom] = useState(initialFilters.age || '');
+  const [ageTo, setAgeTo] = useState(initialFilters.age || '');
 
-  const handleFilter1Change = (event) => {
-    setFilter1Value(event.target.value);
-    onFilterChange('filter1', event.target.value); // Invoke the onFilterChange prop
+  const handleLocation = (event) => {
+    setLocation(event.target.value);
+    onFilterChange('location', event.target.value);
   };
 
-  const handleFilter2Change = (event) => {
-    setFilter2Value(event.target.value);
-    onFilterChange('filter2', event.target.value); // Invoke the onFilterChange prop
+  const handleService = (event) => {
+    setService(event.target.value);
+    onFilterChange('service', event.target.value);
   };
 
-  const handleFilter3Change = (event) => {
-    setFilter3Value(event.target.value);
-    onFilterChange('filter3', event.target.value); // Invoke the onFilterChange prop
+  const handleReleaseDate = (event) => {
+    setReleaseDate(event.target.value);
+    onFilterChange('releaseDate', event.target.value);
   };
 
-  const handleFilter4Change = (event) => {
-    setFilter4Value(event.target.value);
-    onFilterChange('filter4', event.target.value); // Invoke the onFilterChange prop
+  const handleRovai = (event) => {
+    setRovai(event.target.value);
+    onFilterChange('rovai', event.target.value);
   };
+
+  const handleProfile = (event) => {
+    setProfile(event.target.value);
+    onFilterChange('profile', event.target.value);
+  };
+
+  const handleAgeFrom = (event) => {
+    setAgeFrom(event.target.value);
+    onFilterChange('ageFrom', event.target.value);
+  };
+
+  const handleAgeTo = (event) => {
+    setAgeTo(event.target.value);
+    onFilterChange('ageTo', event.target.value);
+  };
+
+  const ageOptions = [<option key="" value=""></option>];
+  for (let age = 20; age <= 60; age++) {
+    ageOptions.push(
+      <option key={age} value={age}>
+        {age}
+      </option>
+    );
+  }
 
 
   return (
     <div className="filter-container">
-      <h2>Filter</h2>
+      <h2>סנן</h2>
 
-      {/* Filter 1 */}
+      {/* Location */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="filter1">
-          Filter 1
+        <label className="filter-label" htmlFor="location">
+        מיקום
         </label>
         <select
           className="filter-select"
-          id="filter1"
-          name="filter1"
-          value={filter1Value}
-          onChange={handleFilter1Change}
+          id="location"
+          name="location"
+          value={location}
+          onChange={handleLocation}
         >
           <option value=""></option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+          <option value="north">צפון</option>
+          <option value="central">מרכז</option>
+          <option value="south">דרום</option>
         </select>
       </div>
 
-      {/* Filter 2 */}
+      {/* Service */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="filter2">
-          Filter 2
+        <label className="filter-label" htmlFor="service">
+          סוג שירות
         </label>
         <select
           className="filter-select"
-          id="filter2"
-          name="filter2"
-          value={filter2Value}
-          onChange={handleFilter2Change}
+          id="service"
+          name="service"
+          value={service}
+          onChange={handleService}
         >
           <option value=""></option>
-          <option value="optionA">Option A</option>
-          <option value="optionB">Option B</option>
-          <option value="optionC">Option C</option>
+          <option value="lohem">לוחם</option>
+          <option value="tomeh">תומך</option>
+          <option value="job">ג'וב</option>
         </select>
       </div>
 
-      {/* Filter 3 */}
+      {/* release date */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="filter3">
-          Filter 3
+        <label className="filter-label" htmlFor="releaseDate">
+          תאריך שחרור
+        </label>
+        <input 
+          type="date" 
+          id="releaseDate" 
+          name="releaseDate" 
+          value={releaseDate} 
+          onChange={handleReleaseDate} />
+
+      </div>
+
+      {/* Rovai */}
+      <div className="filter-section">
+        <label className="filter-label" htmlFor="rovai">
+          רובאי
         </label>
         <select
           className="filter-select"
-          id="filter3"
-          name="filter3"
-          value={filter3Value}
-          onChange={handleFilter3Change}
+          id="rovai"
+          name="rovai"
+          value={rovai}
+          onChange={handleRovai}
         >
           <option value=""></option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
+          <option value="02">02</option>
+          <option value="03">03</option>
+          <option value="05">05</option>
+          <option value="07">07</option>
+          <option value="08">08</option>
+          <option value="09">09</option>
+          <option value="10">10</option>
+          <option value="12">12</option>
         </select>
       </div>
 
-      {/* Filter 4 */}
+      {/* Profile */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="filter4">
-          Filter 4
+        <label className="filter-label" htmlFor="profile">
+          פרופיל
         </label>
         <select
           className="filter-select"
-          id="filter4"
-          name="filter4"
-          value={filter4Value}
-          onChange={handleFilter4Change}
+          id="profile"
+          name="profile"
+          value={profile}
+          onChange={handleProfile}
         >
           <option value=""></option>
-          <option value="optionA">Option A</option>
-          <option value="optionB">Option B</option>
-          <option value="optionC">Option C</option>
+          <option value="21">21</option>
+          <option value="45">45</option>
+          <option value="64">64</option>
+          <option value="72">72</option>
+          <option value="82">82</option>
+          <option value="97">97</option>
+          <option value="100">100</option>
+          <option value="101">101</option>
         </select>
       </div>
 
-      <button onClick={handleFilter}>Filter</button>
-      {/* "Cancel" button */}
-      <button onClick={onCancel}>Cancel</button>
+      {/* age */}
+      <div className="filter-section">
+        <label className="filter-label" htmlFor="age">גיל</label>
+        <label for="from">מ</label>
+        <select className="select-input" id="age" name="age" value={ageFrom} onChange={handleAgeFrom} >
+          {ageOptions}
+        </select>
+
+        <label for="to">עד</label>
+        <select className="select-input" id="age" name="age" value={ageTo} onChange={handleAgeTo} >
+          {ageOptions}
+        </select>
+      </div>
+
+      <button onClick={handleFilter}>סנן</button>
+      <button onClick={onCancel}>בטל</button>
     </div>
   );
 };
