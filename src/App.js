@@ -32,6 +32,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+
+
+        <Route path="/signin" element={<VolunterSearchProfile />} />
+        <Route path="/profile" element={<RecruiterProfile />} />
+
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/recruiter" element={<Recruiter />} />
