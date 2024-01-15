@@ -1,22 +1,29 @@
 import React from 'react'
 
+
+import "../style/FilterData.css"
+
 const FilteredData = ({ data }) => {
+
   return (
-    <div>
-      FilteredData
-      {/* Display selected filter data */}
+    <div className="filtered-data-container">
+      <h2>Filtered Data</h2>
+      {/* Display selected filter data in a row */}
       {Object.keys(data).length > 0 && (
-        <div>
-          <h3>Selected Filter Data:</h3>
-          <ul>
-            {Object.entries(data).map(([filter, value]) => (
-              <li key={filter}>{`${filter}: ${value}`}</li>
+        <div className="filtered-row">
+          {Object.entries(data)
+            .filter(([filter, value]) => value !== '') // Exclude rows with empty values
+            .map(([filter, value]) => (
+              <div key={filter} className="filtered-item">
+                {/* <span className="filter-label">{filter}:</span> */}
+                <span className="filter-value">{value}</span>
+              </div>
             ))}
-          </ul>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
+
 
 export default FilteredData;

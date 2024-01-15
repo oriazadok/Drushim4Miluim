@@ -1,0 +1,35 @@
+/* SignUp.css */
+.signup-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.signup-button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Added color transition */
+}
+
+.signup-button.active {
+  background-color: #4caf50; /* Green when active */
+  color: white; /* White text when active */
+}
+
+.signup-button:not(.active) {
+  background-color: #ddd; /* Gray when inactive */
+  color: #777; /* Dark gray text when inactive */
+}
+
+.signup-component {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Add any other global styles here */

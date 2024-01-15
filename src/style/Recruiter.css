@@ -1,0 +1,45 @@
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif; /* Set your preferred font */
+  }
+  
+  .container {
+    /* Add this class to your root container if necessary */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+
+
+.recruiter-profile-container {
+    max-width: 1200px; /* Set your desired maximum width */
+    margin: auto; /* Center the content horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .profile-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .button-container {
+    margin-bottom: 20px;
+  }
+  
+  .toggle-button {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #3498db; /* Blue color, you can change it */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  /* Add more styles as needed */
+  

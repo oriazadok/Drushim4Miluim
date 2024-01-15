@@ -1,14 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Volunteer from './Volunteer';
 
 import "../style/Volunteers.css"
 
 const Volunteers = () => {
-  const volunteersData = [
-    { id: 1, name: 'Volunteer 1', description: 'Description for Volunteer 1' },
-    { id: 2, name: 'Volunteer 2', description: 'Description for Volunteer 2' },
-    // Add more volunteers as needed
-  ];
+
+  const [volunteersData, setVolunteersData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/volunteers');
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Parse the response JSON
+        const data = await response.json();
+        console.log("data is: ", data);
+        
+        // Set the state with the parsed data
+        setVolunteersData(data);
+
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  
+  // const volunteersData = [
+  //   { id: 1, name: 'Volunteer 1', description: 'Description for Volunteer 1' },
+  //   { id: 2, name: 'Volunteer 2', description: 'Description for Volunteer 2' },
+  //   // Add more volunteers as needed
+  // ];
 
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
 
@@ -26,7 +53,7 @@ const Volunteers = () => {
       <div className="volunteer-list">
         {volunteersData.map((volunteer) => (
           <div
-            key={volunteer.id}
+            key={volunteer._id}
             className="volunteer-list-item"
             onClick={() => handleVolunteerClick(volunteer)}
           >

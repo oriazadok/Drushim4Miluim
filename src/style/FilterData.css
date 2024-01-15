@@ -1,0 +1,39 @@
+/* FilteredData.css */
+
+.filtered-data-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  .filtered-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .filtered-item {
+    flex: 0 0 calc(50% - 10px); /* Two items per row with some spacing */
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .filter-label {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .filter-value {
+    color: #555;
+  }
+  
