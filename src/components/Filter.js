@@ -1,50 +1,49 @@
-// Filter.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../style/Filter.css';
 
 const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
-  const [location, setLocation] = useState(initialFilters.location || '');
-  const [service, setService] = useState(initialFilters.service || '');
-  const [releaseDate, setReleaseDate] = useState(initialFilters.releaseDate || '');
-  const [rovai, setRovai] = useState(initialFilters.rovai || '');
-  const [profile, setProfile] = useState(initialFilters.profile || '');
-  const [ageFrom, setAgeFrom] = useState(initialFilters.age || '');
-  const [ageTo, setAgeTo] = useState(initialFilters.age || '');
+  const [location, setLocation] = useState(initialFilters.מיקום || '');
+  const [service, setService] = useState(initialFilters.שירות || '');
+  const [releaseDate, setReleaseDate] = useState(initialFilters.שחרור || '');
+  const [rovai, setRovai] = useState(initialFilters.רובאי || '');
+  const [profile, setProfile] = useState(initialFilters.פרופיל || '');
+  const [ageFrom, setAgeFrom] = useState(initialFilters.מגיל || '');
+  const [ageTo, setAgeTo] = useState(initialFilters.עד || '');
 
   const handleLocation = (event) => {
     setLocation(event.target.value);
-    onFilterChange('location', event.target.value);
+    onFilterChange('מיקום', event.target.value);
   };
 
   const handleService = (event) => {
     setService(event.target.value);
-    onFilterChange('service', event.target.value);
+    onFilterChange('שירות', event.target.value);
   };
 
   const handleReleaseDate = (event) => {
     setReleaseDate(event.target.value);
-    onFilterChange('releaseDate', event.target.value);
+    onFilterChange('שחרור', event.target.value);
   };
 
   const handleRovai = (event) => {
     setRovai(event.target.value);
-    onFilterChange('rovai', event.target.value);
+    onFilterChange('רובאי', event.target.value);
   };
 
   const handleProfile = (event) => {
     setProfile(event.target.value);
-    onFilterChange('profile', event.target.value);
+    onFilterChange('פרופיל', event.target.value);
   };
 
   const handleAgeFrom = (event) => {
     setAgeFrom(event.target.value);
-    onFilterChange('ageFrom', event.target.value);
+    onFilterChange('מגיל', event.target.value);
   };
 
   const handleAgeTo = (event) => {
     setAgeTo(event.target.value);
-    onFilterChange('ageTo', event.target.value);
+    onFilterChange('עד', event.target.value);
   };
 
   const ageOptions = [<option key="" value=""></option>];
@@ -74,9 +73,9 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
           onChange={handleLocation}
         >
           <option value=""></option>
-          <option value="north">צפון</option>
-          <option value="central">מרכז</option>
-          <option value="south">דרום</option>
+          <option value="צפון">צפון</option>
+          <option value="מרכז">מרכז</option>
+          <option value="דרום">דרום</option>
         </select>
       </div>
 
@@ -93,9 +92,9 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
           onChange={handleService}
         >
           <option value=""></option>
-          <option value="lohem">לוחם</option>
-          <option value="tomeh">תומך</option>
-          <option value="job">ג'וב</option>
+          <option value="לוחם">לוחם</option>
+          <option value="תומך">תומך</option>
+          <option value="ג'וב">ג'וב</option>
         </select>
       </div>
 

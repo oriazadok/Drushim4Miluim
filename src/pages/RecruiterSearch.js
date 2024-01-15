@@ -9,13 +9,13 @@ const Recruiter = () => {
   const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
   const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
   const [filterData, setFilterData] = useState({                   // Manage FilterData's data
-    location: '',
-    service: '',
-    releaseDate: '',
-    rovai: '',
-    profile: '',
-    ageFrom: '',
-    ageTo: '',
+    מיקום: '',
+    שירות: '',
+    שחרור: '',
+    רובאי: '',
+    פרופיל: '',
+    מגיל: '',
+    עד: '',
   });
 
   // This fuction handle the visibility of the button and the AddPosition component
