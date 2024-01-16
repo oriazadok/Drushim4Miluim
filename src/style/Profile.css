@@ -1,0 +1,28 @@
+/* Profile.css */
+
+.profile-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-details {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .profile-details div {
+    width: 48%; /* Adjust as needed */
+  }
+  
+  .profile-details p {
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
