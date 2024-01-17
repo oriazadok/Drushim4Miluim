@@ -57,10 +57,6 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
   }
 
 
-import React from 'react';
-import '../style/Filter.css';
-
-const Filter = () => {
   return (
     <div className="filter-container">
       <h2>סנן</h2>
