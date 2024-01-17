@@ -1,6 +1,4 @@
-// SignUp.js
 import  { useState } from 'react';
-// import axios from 'axios';
 
 import '../style/SignUpVolunteer.css';
 
@@ -85,14 +83,19 @@ const SignUpVolunteer = () => {
         <label className="label" htmlFor="phoneNumber">Phone Number:</label>
         <input type="tel" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}/>
 
+        {/* release date */}
+        <label className="label" htmlFor="releaseDate">Release Date:</label>
+        <input type="date" id="releaseDate" name="releaseDate" value={formData.releaseDate} onChange={handleInputChange} />
+
+
         {/* Origin Service */}
-        <label className="label" htmlFor="originService">Origin Service:</label>
+        {/* <label className="label" htmlFor="originService">Origin Service:</label>
         <select className="select-input" id="originService" name="originService" value={formData.originService} onChange={handleInputChange} >
           <option value=""></option>
           <option value="air">Air</option>
           <option value="sea">Sea</option>
           <option value="land">Land</option>
-        </select>
+        </select> */}
 
         {/* Service */}
         <label className="label" htmlFor="service">Service:</label>

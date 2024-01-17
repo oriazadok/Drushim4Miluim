@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Recruiter from './pages/Recruiter';
+import RecruiterSearch from './pages/RecruiterSearch'
 import ProfileOfRecruiter from './pages/ProfileOfRecruiter';
 import ProfileOfVolunteer from './pages/ProfileOfVolunteer';
 import VolunterSearchProfile from './pages/VolunterSearchProfile';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/profile_of_recruiter" element={<ProfileOfRecruiter />} />
         <Route path="/profile_of_volunteer" element={<ProfileOfVolunteer />} />
         <Route path="/recruiter" element={<Recruiter />} />
+        <Route path="/recruiterSearch" element={<RecruiterSearch />} />
       </Routes>
     </Router>
   );

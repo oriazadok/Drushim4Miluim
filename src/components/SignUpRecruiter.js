@@ -67,23 +67,24 @@ const SignUpRecruiter = () => {
         <input type="tel" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}/>
 
         {/* Origin Service */}
-        <label className="label" htmlFor="originService">Origin Service:</label>
+        {/* <label className="label" htmlFor="originService">Origin Service:</label>
         <select className="select-input" id="originService" name="originService" value={formData.originService} onChange={handleInputChange} >
           <option value=""></option>
           <option value="air">Air</option>
           <option value="sea">Sea</option>
           <option value="land">Land</option>
-        </select>
+        </select> */}
 
         {/* Service */}
-        <label className="label" htmlFor="service">Service:</label>
+        {/* <label className="label" htmlFor="service">Service:</label>
         <select className="select-input" id="service" name="service" value={formData.service} onChange={handleInputChange} >
           <option value=""></option>
           <option value="lohem">Lohem</option>
           <option value="tomeh">Tomeh</option>
           <option value="job">Job</option>
-        </select>
-
+        </select> */}
+        
+        <br />
         <button className="submit-button" type="submit" onClick={handleSubmit}>
           Sign Up
         </button>

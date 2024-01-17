@@ -5,7 +5,11 @@ import "../style/AddPosition.css"
 const AddPosition = ({ onPositionAdded, onCancel }) => {
   const [positionData, setFormData] = useState({
     positionTitle: '',
-    companyName: '',
+    unitName: '',
+    service: '',
+    availability: '',
+    jobType: '',
+    location: '',
     jobDescription: '',
   });
 
@@ -46,15 +50,13 @@ const AddPosition = ({ onPositionAdded, onCancel }) => {
     }
   };
 
-  const handleCancel = () => {
-    onCancel();
-  };
 
   return (
     <div className="add-position-container">
-      <h2>Add New Position</h2>
+      <h2>הוסף משרה חדשה</h2>
       <form className="add-position-form" onSubmit={handleSubmit}>
-        <label htmlFor="positionTitle">Position Title:</label>
+
+        <label htmlFor="positionTitle">תאור המשרה</label>
         <input
           type="text"
           id="positionTitle"
@@ -64,30 +66,81 @@ const AddPosition = ({ onPositionAdded, onCancel }) => {
           required
         /><br/>
 
-        <label htmlFor="companyName">Company Name:</label>
+        <label htmlFor="unitName">יחידה</label>
         <input
           type="text"
-          id="companyName"
-          name="companyName"
-          value={positionData.companyName}
+          id="unitName"
+          name="unitName"
+          value={positionData.unitName}
           onChange={handleChange}
           required
         /><br/>
 
-        <label htmlFor="jobDescription">Job Description:</label>
+        <label className="label" htmlFor="service">סוג שירות</label>
+        <select 
+          className="select-input"
+          id="service" 
+          name="service" 
+          value={positionData.service} 
+          onChange={handleChange} >
+          <option value=""></option>
+          <option value="lohem">לוחם</option>
+          <option value="tomeh">תומך</option>
+          <option value="job">ג'וב</option>
+        </select>
+
+        <label className="label" htmlFor="availability">זמינות</label>
+        <select 
+          className="select-input" 
+          id="availability" 
+          name="availability" 
+          value={positionData.availability} 
+          onChange={handleChange} >
+          <option value=""></option>
+          <option value="immediate">מיידי</option>
+          <option value="notImmediate">לא מיידי</option>
+        </select>
+
+        <label htmlFor="jobType">סוג תפקיד</label>
+        <select 
+          className="select-input" 
+          id="jobType" 
+          name="jobType" 
+          value={positionData.jobType} 
+          onChange={handleChange} >
+          <option value=""></option>
+          <option value="permanent">קבוע</option>
+          <option value="temporary">זמני</option>
+        </select>
+        
+
+        <label htmlFor="location">מיקום</label>
+        <select 
+          className="select-input" 
+          id="location" 
+          name="location" 
+          value={positionData.location} 
+          onChange={handleChange} >
+          <option value=""></option>
+          <option value="north">צפון</option>
+          <option value="central">מרכז</option>
+          <option value="south">דרום</option>
+        </select>
+
+        <label htmlFor="jobDescription">תאור כללי</label>
         <textarea
           id="jobDescription"
           name="jobDescription"
+          rows="6" cols="30"
           value={positionData.jobDescription}
           onChange={handleChange}
           required
         ></textarea><br/>
 
-        <button type="submit">Add Position</button>
-        {/* "Cancel" button */}
-        <button type="button" onClick={handleCancel}>
-          Cancel
-        </button>
+        
+
+        <button type="submit">הוסף משרה</button>
+        <button type="button" onClick={onCancel}>בטל</button>
       </form>
     </div>
   );
