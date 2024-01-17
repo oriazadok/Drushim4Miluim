@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../style/Filter.css';
@@ -56,6 +57,10 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
   }
 
 
+import React from 'react';
+import '../style/Filter.css';
+
+const Filter = () => {
   return (
     <div className="filter-container">
       <h2>סנן</h2>
@@ -65,6 +70,7 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
         <label className="filter-label" htmlFor="location">
         מיקום
         </label>
+
         <select
           className="filter-select"
           id="location"
@@ -176,15 +182,10 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
 
       <button onClick={handleFilter}>סנן</button>
       <button onClick={onCancel}>בטל</button>
-    </div>
-  );
-};
 
-Filter.propTypes = {
-  onFilterChange: PropTypes.func.isRequired,
-  handleFilter: PropTypes.func.isRequired,
-  onCancel: PropTypes.func.isRequired,
-  initialFilters: PropTypes.object.isRequired,
+    </div>
+
+  );
 };
 
 export default Filter;
