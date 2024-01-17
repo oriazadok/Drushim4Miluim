@@ -37,21 +37,24 @@ const SignIn = () => {
         credentials: 'include', // Send cookies (credentials) with the request
         body: JSON.stringify(formData),
       });
-
-      // if (response) {
-        navigate('/recruiter');
-        // throw new Error(`HTTP error! Status: ${response.status}`);
-      // }
-
-      // Parse the response JSON
-      const responseData = await response.json();
-
-      // Log the response from the server
-      console.log('Server Response:', responseData);
+  
+      if (response.ok) {
+        const responseData = await response.json();
+  
+        console.log("responseData: ", responseData);
+  
+        // Pass data to the page you're navigating to using the state object
+        navigate(responseData.type === "recruiters" ? '/recruiter' : '/volunteers', { state: { userType: responseData.type, _id: responseData.id } });
+      } else {
+        // Handle error response
+        console.error(`HTTP error! Status: ${response.status}`);
+      }
     } catch (error) {
       console.error('Error:', error);
     }
   };
+  
+  
 
   return (
     <div className="sign-in-container">
