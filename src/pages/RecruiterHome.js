@@ -2,7 +2,7 @@ import React from 'react'
 
 import Navigator from '../components/Navigator';
 
-const Recruiter = () => {
+const RecruiterHome = () => {
   return (
     <div>
         <Navigator />
@@ -11,4 +11,4 @@ const Recruiter = () => {
   )
 }
 
-export default Recruiter;
+export default RecruiterHome;

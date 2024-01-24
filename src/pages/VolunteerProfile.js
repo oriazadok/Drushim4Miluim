@@ -1,7 +1,7 @@
 import React from 'react';
 import '../style/Profile.css'; 
 
-const ProfileOfVolunteer = ({ name, gender, age, phoneNumber, email, skills, rovai, sadir, ptor }) => {
+const VolunteerProfile = ({ name, gender, age, phoneNumber, email, skills, rovai, sadir, ptor }) => {
   return (
     <div className="profile-container">
       <h2>Volunteer Profile</h2>
@@ -25,4 +25,4 @@ const ProfileOfVolunteer = ({ name, gender, age, phoneNumber, email, skills, rov
   );
 };
 
-export default ProfileOfVolunteer;
+export default VolunteerProfile;
