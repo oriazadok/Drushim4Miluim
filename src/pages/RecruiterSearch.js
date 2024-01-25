@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React, {useState } from 'react';
 
 import AddPosition from '../components/AddPosition';
 import Filter from '../components/Filter';
 import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
 
-const Recruiter = () => {
+const RecruiterSearch = () => {
   const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
   const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
   const [filterData, setFilterData] = useState({                   // Manage FilterData's data
@@ -98,4 +98,4 @@ const Recruiter = () => {
   );
 };
 
-export default Recruiter;
+export default RecruiterSearch;

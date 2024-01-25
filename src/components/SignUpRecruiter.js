@@ -1,17 +1,26 @@
-import  { useState } from 'react';
+import  React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
+// import for translation
+import { useTranslation } from 'react-i18next';
+
+// import css file
 import '../style/SignUpRecruiter.css';
 
 const SignUpRecruiter = () => {
-  const [formData, setFormData] = useState({
+
+  const { t } = useTranslation();   // translation
+  const navigate = useNavigate();   // navigation
+  
+  const [formData, setFormData] = useState({  // save the data the user insert into the form
     name: '',
     email: '',
     password: '',
     phoneNumber: '',
-    originService: '',
-    service: '',
   });
 
+  // Function to handle form input changes
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -19,6 +28,7 @@ const SignUpRecruiter = () => {
     });
   };
 
+  // Function to handle sign-up
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,15 +41,29 @@ const SignUpRecruiter = () => {
         body: JSON.stringify(formData),
       });
   
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      if (response.ok) { // if the the response from the server return as expected
+
+        // Check if the response body is non-empty
+        const responseBody = await response.text();
+        if (responseBody.trim() === "") { // the response body is empty
+          // Show an alert that the user already has an account
+          alert("You already have an account!");
+          return;
+        }
+  
+        // Parse the response JSON
+        const responseData = JSON.parse(responseBody);
+        console.log("responseData: ", responseData);
+
+        // Pass data to the relevant page navigating to using the state object
+        navigate(responseData.type === "recruiters" ? '/recruiterHome' : '/volunteerHome', { state: { _id: responseData._id, type: responseData.type } });
+      
+      } else {
+        // Handle error response
+        console.error(`HTTP error! Status: ${response.status}`);
       }
   
-      // Parse the response JSON
-      const responseData = await response.json();
-  
-      // Log the response from the server
-      console.log('Server Response:', responseData);
+   
     } catch (error) {
       console.error('Error:', error);
     }
@@ -51,42 +75,26 @@ const SignUpRecruiter = () => {
       <form className="form-container" action="/submit" method="post">
 
         {/* Name */}
-        <label className="label" htmlFor="name">Name:</label>
+        <label className="label" htmlFor="name">{t("name")}:</label>
         <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} />
 
         {/* Email */}
-        <label className="label" htmlFor="email">Email:</label>
+        <label className="label" htmlFor="email">{t("email")}:</label>
         <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} />
 
         {/* Password */}
-        <label className="label" htmlFor="password">Password:</label>
+        <label className="label" htmlFor="password">{t("password")}:</label>
         <input type="password" id="password" name="password" value={formData.password} onChange={handleInputChange} />
 
         {/* Phone Number */}
-        <label className="label" htmlFor="phoneNumber">Phone Number:</label>
+        <label className="label" htmlFor="phoneNumber">{t("phone")}:</label>
         <input type="tel" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}/>
 
-        {/* Origin Service */}
-        {/* <label className="label" htmlFor="originService">Origin Service:</label>
-        <select className="select-input" id="originService" name="originService" value={formData.originService} onChange={handleInputChange} >
-          <option value=""></option>
-          <option value="air">Air</option>
-          <option value="sea">Sea</option>
-          <option value="land">Land</option>
-        </select> */}
-
-        {/* Service */}
-        {/* <label className="label" htmlFor="service">Service:</label>
-        <select className="select-input" id="service" name="service" value={formData.service} onChange={handleInputChange} >
-          <option value=""></option>
-          <option value="lohem">Lohem</option>
-          <option value="tomeh">Tomeh</option>
-          <option value="job">Job</option>
-        </select> */}
-        
         <br />
+
+        {/* Sign up button */}
         <button className="submit-button" type="submit" onClick={handleSubmit}>
-          Sign Up
+          {t("signup")}
         </button>
       </form>
     </div>

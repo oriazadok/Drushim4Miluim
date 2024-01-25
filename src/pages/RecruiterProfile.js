@@ -1,43 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import '../style/Profile.css'; 
 
-import AddPosition from '../components/AddPosition';
-import Filter from '../components/Filter';
-import Volunteers from '../components/Volunteers';
-
-const RecruiterProfile = () => {
-
-  const [showAddPosition, setShowAddPosition] = useState(false);
-  const [showFilter, setShowFilter] = useState(false);
-
-  const toggleAddPosition = () => {
-      setShowAddPosition(!showAddPosition);
-  };
-
-  const toggleFilter = () => {
-    setShowFilter(!showFilter);
-};
-
+const RecruiterProfile = ({ name, gender, age, phoneNumber, email, unit }) => {
   return (
-    <div>
-      RecruiterProfile
-      <br/>
-
-      {/* This is a toggle button for the add position component */}
-      <button onClick={toggleAddPosition}>Add Position</button>
-      {showAddPosition && <AddPosition />}
-      <br/>
-
-      <button onClick={toggleFilter}>filter</button>
-      {showFilter && <Filter />}
-
-      <Volunteers />
-
-
-
-      
-     
+    <div className="profile-container">
+      <h2>Recruiter Profile</h2>
+      <div className="profile-details">
+        <div>
+          <p><strong>Name:</strong> {name}</p>
+          <p><strong>Gender:</strong> {gender}</p>
+          <p><strong>Age:</strong> {age}</p>
+          <p><strong>Phone Number:</strong> {phoneNumber}</p>
+          <p><strong>Email:</strong> {email}</p>
+        </div>
+        <div>
+          <p><strong>Unit:</strong> {unit}</p>
+        </div>
+      </div>
+      {/* Add more details as needed */}
     </div>
-  )
-}
+  );
+};
 
 export default RecruiterProfile;

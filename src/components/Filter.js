@@ -1,9 +1,14 @@
 
+import React from 'react'
+import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import '../style/Filter.css';
 
 const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
+
+  const { t } = useTranslation();
+
   const [location, setLocation] = useState(initialFilters.מיקום || '');
   const [service, setService] = useState(initialFilters.שירות || '');
   const [releaseDate, setReleaseDate] = useState(initialFilters.שחרור || '');
@@ -64,7 +69,7 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
       {/* Location */}
       <div className="filter-section">
         <label className="filter-label" htmlFor="location">
-        מיקום
+        {t('location')}
         </label>
 
         <select
@@ -183,5 +188,12 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
 
   );
 };
+
+Filter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  handleFilter: PropTypes.func.isRequired,
+  initialFilters: PropTypes.object.isRequired,
+};
+
 
 export default Filter;

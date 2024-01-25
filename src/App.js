@@ -1,29 +1,60 @@
+import React from 'react'
+
+// imports for translations
+import { I18nextProvider } from 'react-i18next';
+import i18n from './translations/i18n';
+
+// imports for routes
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Home page of the website 
 import Home from './pages/Home';
+
+// signing pages
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import Recruiter from './pages/Recruiter';
-import RecruiterSearch from './pages/RecruiterSearch'
-import ProfileOfRecruiter from './pages/ProfileOfRecruiter';
-import ProfileOfVolunteer from './pages/ProfileOfVolunteer';
-import VolunterSearchProfile from './pages/VolunterSearchProfile';
+
+// pages of recruiter
+import RecruiterHome from './pages/RecruiterHome';
+import RecruiterProfile from './pages/RecruiterProfile';
+import RecruiterSearch from './pages/RecruiterSearch';
+
+// pages of volunteer
+import VolunteerHome from './pages/VolunteerHome';
+import VolunteerProfile from './pages/VolunteerProfile';
+import VolunteerSearch from './pages/VolunteerSearch'
+
+// positions that will be used by both the recruiter and the volunteer
+import Positions from './pages/Positions'
 
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signin" element={<VolunterSearchProfile />} />
-        <Route path="/profile" element={<Recruiter />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/profile_of_recruiter" element={<ProfileOfRecruiter />} />
-        <Route path="/profile_of_volunteer" element={<ProfileOfVolunteer />} />
-        <Route path="/recruiter" element={<Recruiter />} />
-        <Route path="/recruiterSearch" element={<RecruiterSearch />} />
-      </Routes>
-    </Router>
+    <I18nextProvider i18n={i18n}>
+      <Router>
+        <Routes>
+          {/* Home route */}
+          <Route path="/" element={<Home />} />
+
+          {/* Sign in and signout routes */}
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+
+          {/* Routes for recruiter */}
+          <Route path="/recruiterHome" element={<RecruiterHome />} />
+          <Route path="/recruiterProfile" element={<RecruiterProfile />} />
+          <Route path="/recruiterSearch" element={<RecruiterSearch />} />
+
+          {/* Routes for volunteer */}
+          <Route path="/volunteerHome" element={<VolunteerHome />} />
+          <Route path="/volunteerProfile" element={<VolunteerProfile />} />
+          <Route path="/volunteerSearch" element={<VolunteerSearch />} />
+
+          {/* Route that will be used by both the recruiter and the volunteer */}
+          <Route path="/positions" element={<Positions />} />
+        </Routes>
+      </Router>
+    </I18nextProvider>
   );
 }
 

@@ -25,20 +25,6 @@ const BluePage = () => {
     </div>
   );
 };
-const FilterComponent = ({ category }) => {
-  // Implement your filtering options for each category here
-  return (
-    <div className="filter-component">
-      <h3>{category}</h3>
-      {/* Add your scrollable options for this category */}
-      <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
-        {/* Add more options as needed */}
-      </ul>
-    </div>
-  );
-};
+
 
 export default BluePage;
