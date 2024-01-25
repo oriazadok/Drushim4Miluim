@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
+// import for translation
+import { useTranslation } from 'react-i18next';
+
+// import css file
 import '../style/SignIn.css';
-
 
 
 const SignIn = () => {
 
-  const navigate = useNavigate();
-  // history.push('/dashboard');
-  // State to store form data
-  const [formData, setFormData] = useState({
+  const { t } = useTranslation();   // translation
+  const navigate = useNavigate();   // navigation
+
+  const [err, serErr] = useState(false);      // for erroring if the signIn auth goes wrong
+  const [formData, setFormData] = useState({  // save the data the user insert into the form
     email: '',
     password: '',
   });
@@ -37,17 +40,26 @@ const SignIn = () => {
         credentials: 'include', // Send cookies (credentials) with the request
         body: JSON.stringify(formData),
       });
+      
+      if (response.ok) { // if the the response from the server return as expected
 
-      // if (response) {
-        navigate('/recruiter');
-        // throw new Error(`HTTP error! Status: ${response.status}`);
-      // }
+        // Check if the response body is non-empty
+        const responseBody = await response.text();
+        if (responseBody.trim() === "") { // the response body is empty
+          serErr(true);
+          return;
+        }
+  
+        // Parse the response JSON
+        const responseData = JSON.parse(responseBody);
 
-      // Parse the response JSON
-      const responseData = await response.json();
-
-      // Log the response from the server
-      console.log('Server Response:', responseData);
+        // Pass data to the relevant page navigating to using the state object
+        navigate(responseData.type === "recruiters" ? '/recruiterHome' : '/volunteerHome', { state: { _id: responseData._id, type: responseData.type } });
+      
+      } else {
+        // Handle error response
+        console.error(`HTTP error! Status: ${response.status}`);
+      }
     } catch (error) {
       console.error('Error:', error);
     }
@@ -56,36 +68,47 @@ const SignIn = () => {
   return (
     <div className="sign-in-container">
       <form className="sign-in-form">
-        <h2 className="sign-in-heading">Sign In</h2>
+        <h2 className="sign-in-heading">{t("signin")}</h2>
+
+        {/* Email */}
         <label className="form-label">
-          Email:
+          <p>{t('email')}:</p>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
             className="form-input"
-            placeholder="Enter your email"
+            placeholder={t("email_placeholder")}
           />
         </label>
+
+        {/* Password */}
         <label className="form-label">
-          Password:
+          <p>{t('password')}:</p>
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
             className="form-input"
-            placeholder="Enter your password"
+            placeholder={t("password_placeholder")}
           />
         </label>
+
+        {/* Visibility of error in case of failing to sign in */}
+        {err && <p>{t("signIn_err")}</p>}
+
+        {/* Sign in button */}
         <button className="sign-in-button" onClick={signIn}>
-          Sign In
+          {t('signin')}
         </button>
+
+        {/* Button linking to signup page */}
         <p>
-          Don't have an account yet? 
+          {t("no_account")}
           <Link to="/signup">
-            <button>Sign Up</button>
+            <button>{t('signup')}</button>
           </Link>
         </p>
       </form>

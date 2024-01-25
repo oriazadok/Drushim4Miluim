@@ -6,11 +6,11 @@ import '../style/Navigator.css';
 const Navigator = () => {
   return (
     <div className="navbar">
-      <Link to="/recruiter">מסך הבית</Link>
+      <Link to="/recruiterHome">מסך הבית</Link>
       <Link to="/recruiterSearch">
         <span role="img" aria-label="Search">&#128269;</span>
       </Link>
-      <Link to="/recruiterMessages">Recruiter Messages</Link>
+      <Link to="/positions">Recruiter Messages</Link>
       <button aria-label="Notifications">
         <span role="img" aria-label="Bell">🔔</span>
       </button>

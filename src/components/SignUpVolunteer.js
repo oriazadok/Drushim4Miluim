@@ -1,23 +1,33 @@
-import  { React, useState } from 'react';
+import  React, { useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
+// import for translation
+import { useTranslation } from 'react-i18next';
+
+// import css file
 import '../style/SignUpVolunteer.css';
 
 const SignUpVolunteer = () => {
 
-  const [formData, setFormData] = useState({
-    originService: '',
+  const { t } = useTranslation();   // translation
+  const navigate = useNavigate();   // navigation
+
+  const [formData, setFormData] = useState({  // save the data the user insert into the form
+    name: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    releaseDate: '',
     service: '',
     rovai: '',
     credentials: '',
     profile: '',
     age: '',
     region: '',
-    name: '',
-    email: '',
-    password: '',
-    phoneNumber: '',
   });
 
+  // Function to handle form input changes
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -25,6 +35,7 @@ const SignUpVolunteer = () => {
     });
   };
 
+  // Function to handle sign-up
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -37,22 +48,33 @@ const SignUpVolunteer = () => {
         body: JSON.stringify(formData),
       });
   
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+      if (response.ok) { // if the the response from the server return as expected
+
+        // Check if the response body is non-empty
+        const responseBody = await response.text();
+        if (responseBody.trim() === "") { // the response body is empty
+          alert("You already have an account!");
+          return;
+        }
+  
+        // Parse the response JSON
+        const responseData = JSON.parse(responseBody);
+
+        // Pass data to the relevant page navigating to using the state object
+        navigate(responseData.type === "recruiters" ? '/recruiterHome' : '/volunteerHome', { state: { _id: responseData._id, type: responseData.type } });
+      
+      } else {
+        // Handle error response
+        console.error(`HTTP error! Status: ${response.status}`);
       }
   
-      // Parse the response JSON
-      const responseData = await response.json();
-  
-      // Log the response from the server
-      console.log('Server Response:', responseData);
     } catch (error) {
       console.error('Error:', error);
     }
   };
   
 
-
+  // Variable store options for the selecting age 
   const ageOptions = [<option key="" value=""></option>];
   for (let age = 20; age <= 60; age++) {
     ageOptions.push(
@@ -68,46 +90,36 @@ const SignUpVolunteer = () => {
       <form className="form-container" action="/submit" method="post">
 
         {/* Name */}
-        <label className="label" htmlFor="name">Name:</label>
+        <label className="label" htmlFor="name">{t("name")}:</label>
         <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} />
 
         {/* Email */}
-        <label className="label" htmlFor="email">Email:</label>
+        <label className="label" htmlFor="email">{t("email")}:</label>
         <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} />
 
         {/* Password */}
-        <label className="label" htmlFor="password">Password:</label>
+        <label className="label" htmlFor="password">{t("password")}:</label>
         <input type="password" id="password" name="password" value={formData.password} onChange={handleInputChange} />
 
         {/* Phone Number */}
-        <label className="label" htmlFor="phoneNumber">Phone Number:</label>
+        <label className="label" htmlFor="phoneNumber">{t("phone")}:</label>
         <input type="tel" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}/>
 
         {/* release date */}
-        <label className="label" htmlFor="releaseDate">Release Date:</label>
+        <label className="label" htmlFor="releaseDate">{t("releaseDate")}:</label>
         <input type="date" id="releaseDate" name="releaseDate" value={formData.releaseDate} onChange={handleInputChange} />
 
-
-        {/* Origin Service */}
-        {/* <label className="label" htmlFor="originService">Origin Service:</label>
-        <select className="select-input" id="originService" name="originService" value={formData.originService} onChange={handleInputChange} >
-          <option value=""></option>
-          <option value="air">Air</option>
-          <option value="sea">Sea</option>
-          <option value="land">Land</option>
-        </select> */}
-
         {/* Service */}
-        <label className="label" htmlFor="service">Service:</label>
+        <label className="label" htmlFor="service">{t("service")}:</label>
         <select className="select-input" id="service" name="service" value={formData.service} onChange={handleInputChange} >
           <option value=""></option>
-          <option value="lohem">Lohem</option>
-          <option value="tomeh">Tomeh</option>
-          <option value="job">Job</option>
+          <option value="lohem">{t("lohem")}</option>
+          <option value="tomeh">{t("tomeh")}</option>
+          <option value="job">{t("job")}</option>
         </select>
 
         {/* Rovai */}
-        <label className="label" htmlFor="rovai">Rovai:</label>
+        <label className="label" htmlFor="rovai">{t("rovai")}:</label>
         <select className="select-input" id="rovai" name="rovai" value={formData.rovai} onChange={handleInputChange} >
           <option value=""></option>
           <option value="02">02</option>
@@ -121,28 +133,28 @@ const SignUpVolunteer = () => {
         </select>
 
         {/* Credentials */}
-        <label className="label" htmlFor="credentials">Credentials:</label>
+        <label className="label" htmlFor="credentials">{t("credentials")}:</label>
         <select className="select-input" id="credentials" name="credentials" value={formData.credentials} onChange={handleInputChange} >
           <option value=""></option>
-          <option value="טבח">טבח</option>
-          <option value="לוחם">לוחם</option>
-          <option value="מתכנת">מתכנת</option>
-          <option value="טכנאי-רכב">טכנאי-רכב</option>
-          <option value="קמבצ">קמבצ</option>
-          <option value="מגד">מגד</option>
-          <option value="סמגד">סמגד</option>
-          <option value="מפ">מפ</option>
-          <option value="סמפ">סמפ</option>
-          <option value="טכנאי תקשוב">טכנאי תקשוב</option>
-          <option value="נהג-ג">נהג-ג</option>
-          <option value="חובש-קרבי">חובש-קרבי</option>
-          <option value="משקית-תש">משקית-תש</option>
-          <option value="משקית-מילואים">משקית מילואים</option>
+          <option value={t("cook")}>{t("cook")}</option>
+          <option value={t("lohem")}>{t("lohem")}</option>
+          <option value={t("programmer")}>{t("programmer")}</option>
+          <option value={t("car-technician")}>{t("car-technician")}</option>
+          <option value={t("kambatz")}>{t("kambatz")}</option>
+          <option value={t("magad")}>{t("magad")}</option>
+          <option value={t("samgad")}>{t("samgad")}</option>
+          <option value={t("mp")}>{t("mp")}</option>
+          <option value={t("smp")}>{t("smp")}</option>
+          <option value={t("ict-technician")}>{t("ict-technician")}</option>
+          <option value={t("c-driver")}>{t("c-driver")}</option>
+          <option value={t("combat-medic")}>{t("combat-medic")}</option>
+          <option value={t("mashakit-tash")}>{t("mashakit-tash")}</option>
+          <option value={t("mashakit-miluim")}>{t("mashakit-miluim")}</option>
           
         </select>
 
         {/* Profile */}
-        <label className="label" htmlFor="profile">Profile:</label>
+        <label className="label" htmlFor="profile">{t("profile")}:</label>
         <select className="select-input" id="profile" name="profile" value={formData.profile} onChange={handleInputChange} >
           <option value=""></option>
           <option value="21">21</option>
@@ -156,22 +168,23 @@ const SignUpVolunteer = () => {
         </select>
 
         {/* age */}
-        <label className="label" htmlFor="age">Age:</label>
+        <label className="label" htmlFor="age">{t("age")}:</label>
         <select className="select-input" id="age" name="age" value={formData.age} onChange={handleInputChange} >
           {ageOptions}
         </select>
 
         {/* Region */}
-        <label className="label" htmlFor="region">Region:</label>
+        <label className="label" htmlFor="region">{t("region")}:</label>
         <select className="select-input" id="region" name="region" value={formData.region} onChange={handleInputChange} >
           <option value=""></option>
-          <option value="צפון">צפון</option>
-          <option value="מרכז">מרכז</option>
-          <option value="דרום">דרום</option>
+          <option value={t("north")}>{t("north")}</option>
+          <option value={t("center")}>{t("center")}</option>
+          <option value={t("south")}>{t("south")}</option>
         </select>
 
+        {/* Sign up button */}
         <button className="submit-button" type="submit" onClick={handleSubmit}>
-          Sign Up
+          {t("signup")}
         </button>
       </form>
     </div>
