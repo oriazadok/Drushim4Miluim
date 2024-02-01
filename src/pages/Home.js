@@ -1,11 +1,13 @@
 import React from 'react';
 
-import Header from '../components/Header';
+// import Header from '../components/Header';
+import Navigator from '../components/Navigator';
 
 const Home = () => {
   return (
     <div>
-        <Header />
+        {/* <Header /> */}
+        <Navigator />
         <h1>Drushim4Miluim</h1>
         
         

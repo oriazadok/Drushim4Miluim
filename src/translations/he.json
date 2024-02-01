@@ -1,9 +1,13 @@
 {
+    "home": "מסך הבית",
+    "search": "חיפוש",
+    "messages": "מודעות",
     "email": "אימייל",
     "password": "סיסמא",
     "email_placeholder": "הכנס אימייל",
     "password_placeholder": "הכנס סיסמא",
     "signin": "התחבר",
+    "signout": "התנתק",
     "signIn_err": "פרטי ההתחברות שגואים",
     "no_account": "אין חשבון עדיין?",
     "signup": "הירשם",
@@ -36,6 +40,9 @@
     "region": "מיקום",
     "north": "צפון",
     "center": "מרכז",
-    "south": "דרום"
+    "south": "דרום",
+    "hello": "שלום",
+    "addPosition": "הוסף משרה",
+    "addNewPosition": "הוסף משרה חדשה"
 }
   

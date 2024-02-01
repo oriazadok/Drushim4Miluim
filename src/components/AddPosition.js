@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 
+// Translation
+import { useTranslation } from 'react-i18next';
+
 import "../style/AddPosition.css"
 
-const AddPosition = ({ onPositionAdded, onCancel }) => {
+const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
+
+  const { t } = useTranslation();   // translation
+
   const [positionData, setFormData] = useState({
     positionTitle: '',
     unitName: '',
@@ -23,13 +29,21 @@ const AddPosition = ({ onPositionAdded, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const postData = {
+        publisherId: id,
+        type: type,
+        ...positionData,
+      };
+      console.log("postData is: ", postData);
+
+      // console.log("postData: ", postData);
       const response = await fetch('http://localhost:3001/api/addPosition', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         credentials: 'include', // Send cookies (credentials) with the request
-        body: JSON.stringify(positionData),
+        body: JSON.stringify(postData),
       });
   
       if (!response.ok) {
@@ -40,11 +54,9 @@ const AddPosition = ({ onPositionAdded, onCancel }) => {
       const responseData = await response.json();
   
       // Log the response from the server
-      console.log('Server Response:', responseData.message);
-      if(responseData.message === 'success') {
-        onPositionAdded();
-        window.alert("added position");
-      }
+      console.log('Server Response:', responseData);
+      // window.alert("added position");
+      onPositionAdded();
     } catch (error) {
       console.error('Error:', error);
     }
@@ -53,7 +65,7 @@ const AddPosition = ({ onPositionAdded, onCancel }) => {
 
   return (
     <div className="add-position-container">
-      <h2>הוסף משרה חדשה</h2>
+      <h2>{t("addNewPosition")}</h2>
       <form className="add-position-form" onSubmit={handleSubmit}>
 
         <label htmlFor="positionTitle">תאור המשרה</label>

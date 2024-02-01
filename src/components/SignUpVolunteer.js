@@ -52,17 +52,26 @@ const SignUpVolunteer = () => {
 
         // Check if the response body is non-empty
         const responseBody = await response.text();
-        if (responseBody.trim() === "") { // the response body is empty
-          alert("You already have an account!");
-          return;
-        }
   
         // Parse the response JSON
         const responseData = JSON.parse(responseBody);
 
-        // Pass data to the relevant page navigating to using the state object
-        navigate(responseData.type === "recruiters" ? '/recruiterHome' : '/volunteerHome', { state: { _id: responseData._id, type: responseData.type } });
-      
+        // // Insert userData to the localStorage
+        localStorage.setItem('userData', JSON.stringify(responseData));
+
+        console.log("responseData: ", responseData);
+
+        if(responseData) {  // The data received as expected 
+
+          if (responseData.type === "volunteers") {
+            navigate('/volunteerHome');
+          }
+
+        } else {
+          alert("You already have an account!");
+        }
+
+        
       } else {
         // Handle error response
         console.error(`HTTP error! Status: ${response.status}`);

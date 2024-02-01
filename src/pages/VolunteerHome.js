@@ -1,20 +1,40 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 
-import { useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const VolunteerHome = () => {
 
-  const location = useLocation();
+  const navigate = useNavigate();
 
-  // Access the state property from the location object
-  const userId = location.state && location.state._id;
-  const userType = location.state && location.state.type;
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('userData');
+    const parsedUserData = storedUserData ? JSON.parse(storedUserData) : null;
+
+    setUserData(parsedUserData);
+
+    // Call navigate inside useEffect with a condition to prevent infinite updates
+    if (parsedUserData === null) {
+      navigate("/signin");
+    }
+
+    console.log("userData: ", userData);
+
+    
+  }, [navigate]); // Only include navigate as a dependency
+
+  if (userData === null) {
+    return null;
+  }
 
   return (
     <div>
       VolunteerHome
-      <h1>Hello {userType || "Guest"}</h1>
-      <h1>Hello {userId || "Guest"}</h1>
+      <h1>Hello { "Guest"}</h1>
+      <h1>Hello {}</h1>
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import  React, { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 
 // import for translation
@@ -18,6 +17,7 @@ const SignUpRecruiter = () => {
     email: '',
     password: '',
     phoneNumber: '',
+    positions: []
   });
 
   // Function to handle form input changes
@@ -40,30 +40,34 @@ const SignUpRecruiter = () => {
         credentials: 'include', // Send cookies (credentials) with the request
         body: JSON.stringify(formData),
       });
+
   
       if (response.ok) { // if the the response from the server return as expected
 
         // Check if the response body is non-empty
         const responseBody = await response.text();
-        if (responseBody.trim() === "") { // the response body is empty
-          // Show an alert that the user already has an account
-          alert("You already have an account!");
-          return;
-        }
   
         // Parse the response JSON
         const responseData = JSON.parse(responseBody);
-        console.log("responseData: ", responseData);
 
-        // Pass data to the relevant page navigating to using the state object
-        navigate(responseData.type === "recruiters" ? '/recruiterHome' : '/volunteerHome', { state: { _id: responseData._id, type: responseData.type } });
-      
+        // Insert userData to the localStorage
+        localStorage.setItem('userData', JSON.stringify(responseData));
+
+        if(responseData) {  // The data received as expected 
+
+          if (responseData.type === "recruiters") {
+            navigate('/recruiterHome');
+          }
+
+        } else {
+          alert("You already have an account!");
+        }
+
       } else {
         // Handle error response
         console.error(`HTTP error! Status: ${response.status}`);
       }
   
-   
     } catch (error) {
       console.error('Error:', error);
     }

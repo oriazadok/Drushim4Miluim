@@ -1,4 +1,6 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
+
+import Navigator from '../components/Navigator';
 
 import AddPosition from '../components/AddPosition';
 import Filter from '../components/Filter';
@@ -55,6 +57,7 @@ const RecruiterSearch = () => {
 
   return (
     <div className="recruiter-profile-container">
+      <Navigator />
       <h1 className="profile-heading">שלום כבוד המגייס</h1>
       <div className="button-container">
         {/* Visibility of "Add Position" button */}

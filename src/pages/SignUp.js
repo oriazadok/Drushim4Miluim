@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 // import for translation
 import { useTranslation } from 'react-i18next';
 
+import Navigator from '../components/Navigator';
+
 // Two types of signing up
 import SignUpRecruiter from '../components/SignUpRecruiter';
 import SignUpVolunteer from '../components/SignUpVolunteer';
@@ -29,29 +31,37 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h1>{t('signup')}</h1>
-      <div>
-        {/* Sign up as recruiter button */}
-        <button
-          onClick={() => handleButtonClick(1)}
-          className={`signup-button ${recruiter ? 'active' : ''}`}
-        >
-          {t("signup_as_recruiter")}
-        </button>
+    <div>
 
-        {/* Sign up as volunteer button */}
-        <button
-          onClick={() => handleButtonClick(2)}
-          className={`signup-button ${volunteer ? 'active' : ''}`}
-        >
-          {t("signup_as_volunteer")}
-        </button>
+      <Navigator />
+
+      <div className="signup-container">
+        <h1>{t('signup')}</h1>
+
+        <div>
+
+          {/* Sign up as recruiter button */}
+          <button
+            onClick={() => handleButtonClick(1)}
+            className={`signup-button ${recruiter ? 'active' : ''}`}
+          >
+            {t("signup_as_recruiter")}
+          </button>
+
+          {/* Sign up as volunteer button */}
+          <button
+            onClick={() => handleButtonClick(2)}
+            className={`signup-button ${volunteer ? 'active' : ''}`}
+          >
+            {t("signup_as_volunteer")}
+          </button>
+          
+        </div>
+
+        {/* Visibility of two forms types */}
+        {recruiter && <SignUpRecruiter />}
+        {volunteer && <SignUpVolunteer />}
       </div>
-
-      {/* Visibility of two forms types */}
-      {recruiter && <SignUpRecruiter />}
-      {volunteer && <SignUpVolunteer />}
     </div>
   );
 };

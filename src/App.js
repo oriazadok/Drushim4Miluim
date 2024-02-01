@@ -7,6 +7,8 @@ import i18n from './translations/i18n';
 // imports for routes
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+// import Navigator from './components/Navigator';
+
 // Home page of the website 
 import Home from './pages/Home';
 
@@ -32,6 +34,7 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <Router>
+      {/* <Navigator /> */}
         <Routes>
           {/* Home route */}
           <Route path="/" element={<Home />} />
