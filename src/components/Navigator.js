@@ -7,7 +7,6 @@ import '../style/Navigator.css';
 const Navigator = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
