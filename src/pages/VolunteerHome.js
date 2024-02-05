@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 // import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+// Navigation bar Component
+import Navigator from '../components/Navigator';
 
 
 const VolunteerHome = () => {
@@ -32,6 +34,7 @@ const VolunteerHome = () => {
 
   return (
     <div>
+      <Navigator/>
       VolunteerHome
       <h1>Hello { "Guest"}</h1>
       <h1>Hello {}</h1>

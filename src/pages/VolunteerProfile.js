@@ -1,9 +1,11 @@
 import React from 'react';
 import '../style/Profile.css'; 
+import Navigator from '../components/Navigator';
 
 const VolunteerProfile = ({ name, gender, age, phoneNumber, email, skills, rovai, sadir, ptor }) => {
   return (
     <div className="profile-container">
+      <Navigator />
       <h2>Volunteer Profile</h2>
       <div className="profile-details">
         <div>
