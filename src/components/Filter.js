@@ -1,7 +1,10 @@
 
-import React from 'react'
+import React, { useState } from 'react'
+
+// Translation
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+
+
 import PropTypes from 'prop-types';
 import '../style/Filter.css';
 
@@ -170,7 +173,7 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
       {/* age */}
       <div className="filter-section">
         <label className="filter-label" htmlFor="age">גיל</label>
-        <label for="from">מ</label>
+        <label htmlFor="from">מ</label>
         <select className="select-input" id="age" name="age" value={ageFrom} onChange={handleAgeFrom} >
           {ageOptions}
         </select>

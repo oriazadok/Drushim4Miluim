@@ -20,6 +20,7 @@ const Navigator = () => {
     // Clear userData from localStorage and set state to null
     localStorage.removeItem('userData');
     setUserData({});
+    setUserData({});
     navigate('/signin');
   };
   
