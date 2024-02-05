@@ -76,30 +76,28 @@ const SignUpRecruiter = () => {
 
   return (
     <div>
-      <form className="form-container" action="/submit" method="post">
+      <form className="form-container" onSubmit={handleSubmit} method="post">
 
         {/* Name */}
         <label className="label" htmlFor="name">{t("name")}:</label>
-        <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} />
+        <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required />
 
         {/* Email */}
         <label className="label" htmlFor="email">{t("email")}:</label>
-        <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} />
+        <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required />
 
         {/* Password */}
         <label className="label" htmlFor="password">{t("password")}:</label>
-        <input type="password" id="password" name="password" value={formData.password} onChange={handleInputChange} />
+        <input type="password" id="password" name="password" value={formData.password} onChange={handleInputChange} required />
 
         {/* Phone Number */}
         <label className="label" htmlFor="phoneNumber">{t("phone")}:</label>
-        <input type="tel" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange}/>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="05[0-9]{8}" value={formData.phoneNumber} onChange={handleInputChange} required />
 
         <br />
 
         {/* Sign up button */}
-        <button className="submit-button" type="submit" onClick={handleSubmit}>
-          {t("signup")}
-        </button>
+        <input type="submit" value={t('signup')} />
       </form>
     </div>
   );

@@ -94,38 +94,34 @@ const SignIn = () => {
     <div>
       <Navigator />
       <div className="sign-in-container">
-        <form className="sign-in-form">
+        <form className="sign-in-form" onSubmit={signIn}>
           <h2 className="sign-in-heading">{t('signin')}</h2>
 
-          <label className="form-label">
-            <p>{t('email')}:</p>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="form-input"
-              placeholder={t('email_placeholder')}
-            />
-          </label>
+          {/* <div  */}
+          <label className="form-label"><p>{t('email')}:</p></label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            className="form-input"
+            placeholder={t('email_placeholder')}
+          />
 
-          <label className="form-label">
-            <p>{t('password')}:</p>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleInputChange}
-              className="form-input"
-              placeholder={t('password_placeholder')}
-            />
-          </label>
+          <label className="form-label"><p>{t('password')}:</p></label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleInputChange}
+            className="form-input"
+            placeholder={t('password_placeholder')}
+          />
+          
 
           {err && <p>{t('signIn_err')}</p>}
 
-          <button className="sign-in-button" onClick={signIn}>
-            {t('signin')}
-          </button>
+          <input type="submit" value={t('signin')} />
 
           <p>
             {t('no_account')}
