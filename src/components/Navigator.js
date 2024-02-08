@@ -33,7 +33,7 @@ const Navigator = () => {
         <span role="img" aria-label="Bell">🔔</span>
       </button>
       
-      <Link to={userData.type === "recruiters" ? "/recruiterHProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
+      <Link to={userData.type === "recruiters" ? "/recruiterProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
       
       {userData ? (
         // If userData exists, render the Logout button
