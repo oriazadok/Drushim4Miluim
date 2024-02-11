@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+
+// import for translation
+import { useTranslation } from 'react-i18next';
+
 import Volunteer from './Volunteer';
 
 import "../style/Volunteers.css"
 
 const Volunteers = () => {
+
+  const { t } = useTranslation();   // translation
 
   const [volunteersData, setVolunteersData] = useState([]);
 
@@ -31,12 +37,6 @@ const Volunteers = () => {
   }, []);
 
   
-  // const volunteersData = [
-  //   { id: 1, name: 'Volunteer 1', description: 'Description for Volunteer 1' },
-  //   { id: 2, name: 'Volunteer 2', description: 'Description for Volunteer 2' },
-  //   // Add more volunteers as needed
-  // ];
-
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
 
   const handleVolunteerClick = (volunteer) => {
@@ -49,7 +49,7 @@ const Volunteers = () => {
 
   return (
     <div className="volunteers-container">
-      <h2>Volunteers</h2>
+      <h2>{t("volunteers")}</h2>
       <div className="volunteer-list">
         {volunteersData.map((volunteer) => (
           <div

@@ -39,8 +39,8 @@ const Navigator = () => {
       <button aria-label="Notifications">
         <span role="img" aria-label="Bell">🔔</span>
       </button>
-     
-      <Link to={userData && userData.type === "recruiters" ? "/recruiterProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
+      
+      <Link to={userData && userData.type === "recruiters" ? "/recruiterHProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
       
       {Object.keys(userData).length === 0 ? (
          // If userData doesn't exist, render the Sign In link

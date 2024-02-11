@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import PositionCard from '../components/PositionCard';
 // Navigation bar Component
 import Navigator from '../components/Navigator';
-import Filter from '../components/Filter';
+// import Filter from '../components/Filter';
 import FilterData from '../components/FilterData';
 
 const Positions = () => {
@@ -138,14 +138,14 @@ const Positions = () => {
         )}
 
         {/* Visibility of "Filter" */}
-        {showFilter && (
+        {/* {showFilter && (
             <Filter
               onFilterChange={handleFilterChange}
               handleFilter={filter}
               onCancel={cancelFilter}
               initialFilters={filterData}
             />
-        )}
+        )} */}
       </div>
       
       {/* Visibility of "FilterData" */}

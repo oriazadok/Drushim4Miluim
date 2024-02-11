@@ -1,50 +1,43 @@
 import React, { useState } from 'react';
 
+// Translation
+import { useTranslation } from 'react-i18next';
+
+// Navigation bar Component
 import Navigator from '../components/Navigator';
 
-import AddPosition from '../components/AddPosition';
-import Filter from '../components/Filter';
+
+// Volunteers Search handling components
+import VolunteersFilter from '../components/VolunteersFilter';
 import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
 
+// import css file
+// import '../style/RecruiterSearch.css';
+
 const RecruiterSearch = () => {
-  const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
+
+  const { t } = useTranslation();   // translation
+  
   const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
   const [filterData, setFilterData] = useState({                   // Manage FilterData's data
-    מיקום: '',
-    שירות: '',
-    שחרור: '',
-    רובאי: '',
-    פרופיל: '',
-    מגיל: '',
-    עד: '',
+    location: '',
+    service: '',
+    releaseDate: '',
+    rovai: '',
+    profile: '',
+    fromAge: '',
+    untilAge: '',
   });
-
-  // This fuction handle the visibility of the button and the AddPosition component
-  const addPosition = () => {
-    setShowAddPosition(!showAddPosition);
-    setShowFilter(false); // Close filter when adding a position
-  };
-
-  // This function transferred to the AddPosition component to handle adding position
-  const handlePositionAdded = () => {
-    setShowAddPosition(!showAddPosition);
-  };
-
-  // This function transferred to the AddPosition component to handle cancle the adding position
-  const handleCancelAddPosition = () => {
-    setShowAddPosition(false);
-  };
 
   // This function transferred to the Filter to save the filter's data
   const handleFilterChange = (filterName, value) => {
     setFilterData((prevData) => ({ ...prevData, [filterName]: value }));
   };
 
-  // This function transferred to the Filter to handle filtering
-  const filter = () => {
+  // This function transferred to the Filter to handle buton view
+  const filterView = () => {
     setShowFilter(!showFilter);
-    setShowAddPosition(false);    // Close AddPosition when showing filter
   };
 
   // This function transferred to the Filter to cancel the filter
@@ -59,32 +52,20 @@ const RecruiterSearch = () => {
     <div className="recruiter-profile-container">
       <Navigator />
       <h1 className="profile-heading">שלום כבוד המגייס</h1>
-      <div className="button-container">
-        {/* Visibility of "Add Position" button */}
-        {!showAddPosition && (
-          <button className="toggle-button" onClick={addPosition}>הוסף משרה</button>
-        )}
-        
-        {/* Visibility of "Add Position" */}
-        {showAddPosition && (
-          <AddPosition
-            onPositionAdded={handlePositionAdded}
-            onCancel={handleCancelAddPosition}
-          />
-        )}
-      </div>
+      
 
       <div className="button-container">
+
         {/* Visibility of "Filter" button */}
         {!showFilter && (
-          <button className="toggle-button" onClick={filter}>סנן</button>
+          <button className="toggle-button" onClick={filterView}>{t("filter")}</button>
         )}
 
         {/* Visibility of "Filter" */}
         {showFilter && (
-            <Filter
+            <VolunteersFilter
               onFilterChange={handleFilterChange}
-              handleFilter={filter}
+              handleFilter={filterView}
               onCancel={cancelFilter}
               initialFilters={filterData}
             />
@@ -96,6 +77,7 @@ const RecruiterSearch = () => {
         <FilterData data={filterData} />
       )}
 
+      {/* Filtered voluntters */}
       <Volunteers />
     </div>
   );

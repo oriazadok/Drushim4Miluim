@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Navigator from '../components/Navigator';
 
 import AddPosition from '../components/AddPosition';
-import Filter from '../components/Filter';
+// import Filter from '../components/Filter';
 import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
 
@@ -81,14 +81,14 @@ const RecruiterSearch = () => {
         )}
 
         {/* Visibility of "Filter" */}
-        {showFilter && (
+        {/* {showFilter && (
             <Filter
               onFilterChange={handleFilterChange}
               handleFilter={filter}
               onCancel={cancelFilter}
               initialFilters={filterData}
             />
-        )}
+        )} */}
       </div>
       
       {/* Visibility of "FilterData" */}
