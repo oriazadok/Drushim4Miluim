@@ -5,22 +5,68 @@ import { useTranslation } from 'react-i18next';
 import PositionCard from '../components/PositionCard';
 // Navigation bar Component
 import Navigator from '../components/Navigator';
-// import Filter from '../components/Filter';
+import PositionsFilter from '../components/PositionsFilter';
 import FilterData from '../components/FilterData';
+import AddPosition from '../components/AddPosition';
+
+
+
 
 const Positions = () => {
   const [page, setPage] = useState(0);
   // const [filter, setFilter] = useState('');
   const { t } = useTranslation();   // translation
+  const [showAddPosition, setShowAddPosition] = useState(false);  // Visibility of AddPosition component
+  const [userData, setUserData] = useState(null);  // Store userData values
+  const [positions, setPositions] = useState([]);  // Store user's positions values
+
+  
+
+  const getUserData = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/getUserData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({_id: userData._id, type: userData.type}),
+      });
+
+      if (response.ok) {
+        const responseBody = await response.text();
+        if (responseBody.trim() === '') {
+          return;
+        }
+
+        const responseData = JSON.parse(responseBody);
+        localStorage.setItem('userData', JSON.stringify(responseData));
+        setUserData(responseData);
+        setPositions(responseData.positions);
+      } else {
+        console.error(`HTTP error! Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  const handleCancelAddPosition = () => {
+    setShowAddPosition(false);
+  };
+
+  const handlePositionAdded = () => {
+    setShowAddPosition(!showAddPosition); 
+    getUserData();
+  };
+
+ 
   const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
   const [filterData, setFilterData] = useState({                   // Manage FilterData's data
-    מיקום: '',
-    שירות: '',
-    שחרור: '',
-    רובאי: '',
-    פרופיל: '',
-    מגיל: '',
-    עד: '',
+    service: '',
+    availability: '',
+    location: '',
+
   });
   
 
@@ -50,102 +96,36 @@ const Positions = () => {
     // for case that there is no filtering to show
     const shouldShowFilterData = Object.values(filterData).some((value) => value !== '');
 
-  const resultPos =  [
-    {
-      publisherId: '65bb5ee27b3ea5d2bc287443',
-      type: 'recruiters',
-      positionTitle: 'first',
-      unitName: 'ef2f2',
-      service: '',
-      availability: '',
-      jobType: '',
-      location: '',
-      jobDescription: 'f22c22vf2'
-    },
-    {
-      publisherId: '65bb5ee27b3ea5d2bc287443',
-      type: 'recruiters',
-      positionTitle: 'second',
-      unitName: 'ewf2e',
-      service: '',
-      availability: '',
-      jobType: '',
-      location: '',
-      jobDescription: 've2vev2'
-    },
-    {
-      publisherId: '65bb5ee27b3ea5d2bc287443',
-      type: 'recruiters',
-      positionTitle: 'third',
-      unitName: 'fewef2q',
-      service: '',
-      availability: '',
-      jobType: '',
-      location: '',
-      jobDescription: 'wev'
-    },
-    {
-      publisherId: '65bb5ee27b3ea5d2bc287443',
-      type: 'recruiters',
-      positionTitle: 'cewfcwe',
-      unitName: 'cvwecv',
-      service: '',
-      availability: '',
-      jobType: '',
-      location: '',
-      jobDescription: 'cewcfv2we'
-    },
-    {
-      publisherId: '65bb5ee27b3ea5d2bc287443',
-      type: 'recruiters',
-      positionTitle: 'fewfce',
-      unitName: 'vwrvr',
-      service: '',
-      availability: '',
-      jobType: '',
-      location: '',
-      jobDescription: 'vrv3wv'
-    },
-    {
-      publisherId: '65bb5ee27b3ea5d2bc287443',
-      type: 'recruiters',
-      positionTitle: 'dqeq',
-      unitName: 'cqwecv',
-      service: '',
-      availability: '',
-      jobType: '',
-      location: '',
-      jobDescription: 'vcewqvw'
-    }
-  ]
   
   return (
     <div>
       <Navigator/>
       <h1>My Positions</h1>
-      {/* <div>
+      <div>
         <input
           type="text"
           value={filter}
           onChange={handleFilterChange}
           placeholder="חיפוש מודעה"
         />
-      </div> */}
+      </div>
       <div className="button-container">
         {/* Visibility of "Filter" button */}
         {!showFilter && (
           <button className="toggle-button" onClick={filter}>סנן</button>
         )}
 
+        
+
         {/* Visibility of "Filter" */}
-        {/* {showFilter && (
-            <Filter
+        {showFilter && (
+            <PositionsFilter
               onFilterChange={handleFilterChange}
               handleFilter={filter}
               onCancel={cancelFilter}
               initialFilters={filterData}
             />
-        )} */}
+        )}
       </div>
       
       {/* Visibility of "FilterData" */}

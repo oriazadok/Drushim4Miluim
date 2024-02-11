@@ -1,127 +1,120 @@
-import React, { useState } from 'react';
+
+import React, { useState } from 'react'
 
 // Translation
 import { useTranslation } from 'react-i18next';
 
-import "../style/AddPosition.css"
 
-const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
+import PropTypes from 'prop-types';
+import '../style/Filter.css';
 
-  const { t } = useTranslation();   // translation
+const PositionsFilter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
 
-  const [positionData, setFormData] = useState({
+  const { t } = useTranslation();
 
-    service: '',
-    availability: '',
-    jobType: '',
-    location: '',
-  });
+  const [service, setService] = useState(initialFilters.service || '');
+  const [availability, setAvilability] = useState(initialFilters.availability || '');
+  const [location, setLocation] = useState(initialFilters.location || '');
 
-  const handleChange = (e) => {
-    setFormData({
-      ...positionData,
-      [e.target.name]: e.target.value,
-    });
+
+  const handlesetAvailability = (event) => {
+    setAvilability(event.target.value);
+    onFilterChange('availability', event.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const postData = {
-        publisherId: id,
-        type: type,
-        ...positionData,
-      };
-      console.log("postData is: ", postData);
-
-      // console.log("postData: ", postData);
-      const response = await fetch('http://localhost:3001/api/addPosition', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include', // Send cookies (credentials) with the request
-        body: JSON.stringify(postData),
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      // Parse the response JSON
-      const responseData = await response.json();
-  
-      // Log the response from the server
-      console.log('Server Response:', responseData);
-      // window.alert("added position");
-      onPositionAdded();
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  const handleService = (event) => {
+    setService(event.target.value);
+    onFilterChange('service', event.target.value);
   };
+
+
+
+  const handleLocation = (event) => {
+    setLocation(event.target.value);
+    onFilterChange("location", event.target.value);
+  };
+
 
 
   return (
-    <div className="add-position-container">
-      <h2>{t("addNewPosition")}</h2>
-      <form className="add-position-form" onSubmit={handleSubmit}>
-        
-        <label className="label" htmlFor="service">סוג שירות</label>
-        <select 
-          className="select-input"
-          id="service" 
-          name="service" 
-          value={positionData.service} 
-          onChange={handleChange} >
-          <option value=""></option>
-          <option value="lohem">לוחם</option>
-          <option value="tomeh">תומך</option>
-          <option value="job">ג'וב</option>
-        </select>
+    <div className="filter-container">
+      <h2>סנן</h2>
 
-        <label className="label" htmlFor="availability">זמינות</label>
-        <select 
-          className="select-input" 
-          id="availability" 
-          name="availability" 
-          value={positionData.availability} 
-          onChange={handleChange} >
-          <option value=""></option>
-          <option value="immediate">מיידי</option>
-          <option value="notImmediate">לא מיידי</option>
-        </select>
+      {/* Location */}
+      <div className="filter-section">
+        <label className="filter-label" htmlFor="location">
+        {t('region')}
+        </label>
 
-        <label htmlFor="jobType">סוג תפקיד</label>
-        <select 
-          className="select-input" 
-          id="jobType" 
-          name="jobType" 
-          value={positionData.jobType} 
-          onChange={handleChange} >
+        <select
+          className="filter-select"
+          id="location"
+          name="location"
+          value={location}
+          onChange={handleLocation}
+        >
           <option value=""></option>
-          <option value="permanent">קבוע</option>
-          <option value="temporary">זמני</option>
+          <option value="צפון">צפון</option>
+          <option value="מרכז">מרכז</option>
+          <option value="דרום">דרום</option>
         </select>
-        
+      </div>
 
-        <label htmlFor="location">מיקום</label>
-        <select 
-          className="select-input" 
-          id="location" 
-          name="location" 
-          value={positionData.location} 
-          onChange={handleChange} >
+      {/* Service */}
+      <div className="filter-section">
+        <label className="filter-label" htmlFor="service">
+          סוג שירות
+        </label>
+        <select
+          className="filter-select"
+          id="service"
+          name="service"
+          value={service}
+          onChange={handleService}
+        >
           <option value=""></option>
-          <option value="north">צפון</option>
-          <option value="central">מרכז</option>
-          <option value="south">דרום</option>
+          <option value="לוחם">לוחם</option>
+          <option value="תומך">תומך</option>
+          <option value="ג'וב">ג'וב</option>
         </select>
-        
-        <button type="submit">הוסף משרה</button>
-        <button type="button" onClick={onCancel}>בטל</button>
-      </form>
+      </div>
+
+      {/* Avilability */}
+      <div className="filter-section">
+         <label className="filter-label" htmlFor="availability">
+          זמינות
+        </label>
+        <select
+          className="filter-select"
+          id="availability"
+          name="availability"
+          value={availability}
+          onChange={handlesetAvailability}
+        >
+          <option value=""></option>
+          <option value="מיידי">מיידי</option>
+          <option value="לא מיידי">לא מיידי</option>
+        </select>
+      </div>
+
+
+
+
+
+
+      <button onClick={handleFilter}>סנן</button>
+      <button onClick={onCancel}>בטל</button>
+
     </div>
+
   );
 };
 
-export default AddPosition;
+PositionsFilter.propTypes = {
+  onFilterChange: PropTypes.func.isRequired,
+  handleFilter: PropTypes.func.isRequired,
+  initialFilters: PropTypes.object.isRequired,
+};
+
+
+export default PositionsFilter;
