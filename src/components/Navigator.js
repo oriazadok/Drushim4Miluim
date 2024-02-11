@@ -39,7 +39,7 @@ const Navigator = () => {
       <button aria-label="Notifications">
         <span role="img" aria-label="Bell">🔔</span>
       </button>
-      
+     
       <Link to={userData && userData.type === "recruiters" ? "/recruiterProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
       
       {Object.keys(userData).length === 0 ? (

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
 import Navigator from '../components/Navigator';
-
+import AddPosition from '../components/AddPosition';
 import PositionFilter from '../components/PositionsFilter';
+
 import Filter from '../components/Filter';
 import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
