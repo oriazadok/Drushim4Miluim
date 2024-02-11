@@ -26,9 +26,25 @@ const RecruiterSearch = () => {
     releaseDate: '',
     rovai: '',
     profile: '',
-    fromAge: '',
-    untilAge: '',
+    ageFrom: '',
+    ageTo: '',
   });
+
+  // This fuction handle the visibility of the button and the AddPosition component
+  const addPosition = () => {
+    setShowAddPosition(!showAddPosition);
+    setShowFilter(false); // Close filter when adding a position
+  };
+
+  // This function transferred to the AddPosition component to handle adding position
+  const handlePositionAdded = () => {
+    setShowAddPosition(!showAddPosition);
+  };
+
+  // This function transferred to the AddPosition component to handle cancle the adding position
+  const handleCancelAddPosition = () => {
+    setShowAddPosition(false);
+  };
 
   // This function transferred to the Filter to save the filter's data
   const handleFilterChange = (filterName, value) => {

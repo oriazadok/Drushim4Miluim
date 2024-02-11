@@ -22,7 +22,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
   const handleLocation = (event) => {
     setLocation(event.target.value);
-    onFilterChange("location", event.target.value);
+    onFilterChange('location', event.target.value);
   };
 
   const handleService = (event) => {
@@ -83,9 +83,9 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
           onChange={handleLocation}
         >
           <option value=""></option>
-          <option value="צפון">צפון</option>
-          <option value="מרכז">מרכז</option>
-          <option value="דרום">דרום</option>
+          <option value="north">צפון</option>
+          <option value="central">מרכז</option>
+          <option value="south">דרום</option>
         </select>
       </div>
 
@@ -102,9 +102,9 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
           onChange={handleService}
         >
           <option value=""></option>
-          <option value="לוחם">לוחם</option>
-          <option value="תומך">תומך</option>
-          <option value="ג'וב">ג'וב</option>
+          <option value="lohem">לוחם</option>
+          <option value="tomeh">תומך</option>
+          <option value="job">ג'וב</option>
         </select>
       </div>
 
@@ -186,7 +186,6 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
       <button onClick={handleFilter}>סנן</button>
       <button onClick={onCancel}>בטל</button>
-
     </div>
 
   );
