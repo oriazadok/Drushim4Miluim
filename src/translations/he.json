@@ -38,6 +38,7 @@
     "profile": "פרופיל",
     "age": "גיל",
     "region": "מיקום",
+    "location": "מיקום",
     "north": "צפון",
     "center": "מרכז",
     "south": "דרום",
@@ -46,7 +47,7 @@
     "addNewPosition": "הוסף משרה חדשה",
     "next": "הבא",
     "previous": "הקודם",
-    "filter": "סנן"
-    
+    "filter": "סנן",
+    "volunteers": "מתנדבים"
 }
   

@@ -8,7 +8,7 @@ import Navigator from '../components/Navigator';
 
 
 // Volunteers Search handling components
-import Filter from '../components/Filter';
+import VolunteersFilter from '../components/VolunteersFilter';
 import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
 
@@ -63,7 +63,7 @@ const RecruiterSearch = () => {
 
         {/* Visibility of "Filter" */}
         {showFilter && (
-            <Filter
+            <VolunteersFilter
               onFilterChange={handleFilterChange}
               handleFilter={filterView}
               onCancel={cancelFilter}

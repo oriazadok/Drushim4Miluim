@@ -122,9 +122,9 @@ const SignUpVolunteer = () => {
         <label className="label" htmlFor="service">{t("service")}:</label>
         <select className="select-input" id="service" name="service" value={formData.service} onChange={handleInputChange} required >
           <option value=""></option>
-          <option value="lohem">{t("lohem")}</option>
-          <option value="tomeh">{t("tomeh")}</option>
-          <option value="job">{t("job")}</option>
+          <option value={t("lohem")}>{t("lohem")}</option>
+          <option value={t("tomeh")}>{t("tomeh")}</option>
+          <option value={t("job")}>{t("job")}</option>
         </select>
 
         {/* Rovai */}

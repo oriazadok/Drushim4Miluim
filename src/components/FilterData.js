@@ -1,9 +1,14 @@
 import React from 'react'
 
+// Translation
+import { useTranslation } from 'react-i18next';
+
 
 import "../style/FilterData.css"
 
 const FilteredData = ({ data }) => {
+
+  const { t } = useTranslation();
 
   return (
     <div className="filtered-data-container">
@@ -15,7 +20,7 @@ const FilteredData = ({ data }) => {
             .filter(([filter, value]) => value !== '') // Exclude rows with empty values
             .map(([filter, value]) => (
               <div key={filter} className="filtered-item">
-                <span className="filter-label">{filter}:</span>
+                <span className="filter-label">{t(filter)}:</span>
                 <span className="filter-value">{value}</span>
               </div>
             ))}

@@ -8,51 +8,51 @@ import { useTranslation } from 'react-i18next';
 import PropTypes from 'prop-types';
 import '../style/Filter.css';
 
-const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
+const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
 
   const { t } = useTranslation();
 
-  const [location, setLocation] = useState(initialFilters.מיקום || '');
-  const [service, setService] = useState(initialFilters.שירות || '');
-  const [releaseDate, setReleaseDate] = useState(initialFilters.שחרור || '');
-  const [rovai, setRovai] = useState(initialFilters.רובאי || '');
-  const [profile, setProfile] = useState(initialFilters.פרופיל || '');
-  const [ageFrom, setAgeFrom] = useState(initialFilters.מגיל || '');
-  const [ageTo, setAgeTo] = useState(initialFilters.עד || '');
+  const [location, setLocation] = useState(initialFilters.location || '');
+  const [service, setService] = useState(initialFilters.service || '');
+  const [releaseDate, setReleaseDate] = useState(initialFilters.releaseDate || '');
+  const [rovai, setRovai] = useState(initialFilters.rovai || '');
+  const [profile, setProfile] = useState(initialFilters.profile || '');
+  const [ageFrom, setAgeFrom] = useState(initialFilters.ageFrom || '');
+  const [ageTo, setAgeTo] = useState(initialFilters.ageTo || '');
 
   const handleLocation = (event) => {
     setLocation(event.target.value);
-    onFilterChange('מיקום', event.target.value);
+    onFilterChange("location", event.target.value);
   };
 
   const handleService = (event) => {
     setService(event.target.value);
-    onFilterChange('שירות', event.target.value);
+    onFilterChange('service', event.target.value);
   };
 
   const handleReleaseDate = (event) => {
     setReleaseDate(event.target.value);
-    onFilterChange('שחרור', event.target.value);
+    onFilterChange('releaseDate', event.target.value);
   };
 
   const handleRovai = (event) => {
     setRovai(event.target.value);
-    onFilterChange('רובאי', event.target.value);
+    onFilterChange('rovai', event.target.value);
   };
 
   const handleProfile = (event) => {
     setProfile(event.target.value);
-    onFilterChange('פרופיל', event.target.value);
+    onFilterChange('profile', event.target.value);
   };
 
   const handleAgeFrom = (event) => {
     setAgeFrom(event.target.value);
-    onFilterChange('מגיל', event.target.value);
+    onFilterChange('ageFrom', event.target.value);
   };
 
   const handleAgeTo = (event) => {
     setAgeTo(event.target.value);
-    onFilterChange('עד', event.target.value);
+    onFilterChange('ageTo', event.target.value);
   };
 
   const ageOptions = [<option key="" value=""></option>];
@@ -72,7 +72,7 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
       {/* Location */}
       <div className="filter-section">
         <label className="filter-label" htmlFor="location">
-        {t('location')}
+        {t('region')}
         </label>
 
         <select
@@ -178,7 +178,7 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
           {ageOptions}
         </select>
 
-        <label for="to">עד</label>
+        <label htmlFor="to">עד</label>
         <select className="select-input" id="age" name="age" value={ageTo} onChange={handleAgeTo} >
           {ageOptions}
         </select>
@@ -192,11 +192,11 @@ const Filter = ({ onFilterChange, handleFilter, onCancel, initialFilters }) => {
   );
 };
 
-Filter.propTypes = {
+VolunteersFilter.propTypes = {
   onFilterChange: PropTypes.func.isRequired,
   handleFilter: PropTypes.func.isRequired,
   initialFilters: PropTypes.object.isRequired,
 };
 
 
-export default Filter;
+export default VolunteersFilter;
