@@ -83,9 +83,9 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
           onChange={handleLocation}
         >
           <option value=""></option>
-          <option value="north">צפון</option>
-          <option value="central">מרכז</option>
-          <option value="south">דרום</option>
+          <option value={t("north")}>{t("north")}</option>
+          <option value={t("center")}>{t("center")}</option>
+          <option value={t("south")}>{t("south")}</option>
         </select>
       </div>
 
@@ -102,9 +102,9 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
           onChange={handleService}
         >
           <option value=""></option>
-          <option value="lohem">לוחם</option>
-          <option value="tomeh">תומך</option>
-          <option value="job">ג'וב</option>
+          <option value={t("lohem")}>לוחם</option>
+          <option value={t("tomeh")}>תומך</option>
+          <option value={t("job")}>ג'וב</option>
         </select>
       </div>
 

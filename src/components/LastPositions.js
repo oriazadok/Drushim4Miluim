@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react';
 import PositionCard from './PositionCard';
 import Position from './Position';
 
+
+
+
 import "../style/LastPositions.css"
 
 const LastPositions = ({ positions }) => {
+    
     const [positionsData, setPositionsData] = useState([]);
     const [selectedPosition, setSelectedPosition] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // console.log("poss: ", positions)
+                console.log("cosomo poss: ", positions)
                 const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
                     method: 'POST',
                     headers: {

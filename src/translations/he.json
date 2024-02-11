@@ -1,5 +1,6 @@
 {
     "home": "מסך הבית",
+    "personalArea": "אזור אישי",
     "search": "חיפוש",
     "messages": "מודעות",
     "email": "אימייל",
@@ -42,12 +43,19 @@
     "north": "צפון",
     "center": "מרכז",
     "south": "דרום",
+    "ageFrom": "מגיל",
+    "ageTo": "עד גיל",
     "hello": "שלום",
     "addPosition": "הוסף משרה",
     "addNewPosition": "הוסף משרה חדשה",
+    "availability": "זמינות",
     "next": "הבא",
     "previous": "הקודם",
     "filter": "סנן",
-    "volunteers": "מתנדבים"
+    "volunteers": "מתנדבים",
+    "immediate": "מיידי",
+    "inTwoWeeks": "בשבועיים",
+    "inMonth": "בחודש"
+
 }
   

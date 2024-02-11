@@ -109,8 +109,8 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           value={positionData.availability} 
           onChange={handleChange} >
           <option value=""></option>
-          <option value="immediate">מיידי</option>
-          <option value="notImmediate">לא מיידי</option>
+          <option value={t("immediate")}>{t("immediate")}</option>
+          <option value={t("notImmediate")}>{t("notImmediate")}</option>
         </select>
 
         <label htmlFor="jobType">סוג תפקיד</label>
@@ -135,7 +135,7 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           onChange={handleChange} >
           <option value=""></option>
           <option value="north">צפון</option>
-          <option value="central">מרכז</option>
+          <option value="center">מרכז</option>
           <option value="south">דרום</option>
         </select>
 
