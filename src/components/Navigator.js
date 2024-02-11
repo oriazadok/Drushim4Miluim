@@ -32,7 +32,7 @@ const Navigator = () => {
   
   return (
     <div className="navbar">
-      <Link to={userData && userData.type === "recruiters" ? "/recruiterHome" : userData.type === "volunteers" ? "/volunteerHome" : "/signin"}>{t("home")}</Link>
+      <Link to={userData && userData.type === "recruiters" ? "/" : userData.type === "volunteers" ? "/" : "/"}>{t("home")}</Link>
       <Link to={userData && userData.type === "recruiters" ? "/recruiterSearch" : userData.type === "volunteers" ? "/volunteerSearch" : "/signin"}>{t("search")}</Link>
       <Link to="/positions">{t("messages")}</Link>
 
