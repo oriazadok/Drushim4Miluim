@@ -4,9 +4,8 @@ import Navigator from '../components/Navigator';
 
 import PositionFilter from '../components/PositionsFilter';
 import FilterData from '../components/FilterData';
-import Volunteers from '../components/Volunteers';
 import Position from '../components/Position';
-import Positions from './Positions';
+
 
 const VolunteerSearch = () => {
   const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
