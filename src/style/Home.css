@@ -1,0 +1,29 @@
+.container {
+  text-align: center; /* Center the elements horizontally */
+  padding: 20px; /* Add padding to improve appearance */
+}
+
+.title {
+  color: #333; /* Define the color of the title */
+}
+
+.description {
+  color: #666; /* Define the color of the description text */
+  text-align: center; /* Center the text */
+}
+
+.link {
+  color: blue; /* Define the color of the link */
+  display: block; /* Convert the link into a block to center it */
+  margin: 0 auto;
+}
+
+.image {
+  width: 800px; /* Define the width of the image */
+  height: auto; /* Make the height of the image adjust automatically */
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px; /* Add top margin to separate the image from the rest of the content */
+  margin-bottom: 40px;
+}
+  
