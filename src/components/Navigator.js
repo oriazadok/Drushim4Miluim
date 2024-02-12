@@ -22,6 +22,7 @@ const Navigator = () => {
       }
     }
   }, []); 
+  
 
   const handleLogout = () => {
     // Clear userData from localStorage and set state to {}
