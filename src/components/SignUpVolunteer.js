@@ -81,6 +81,24 @@ const SignUpVolunteer = () => {
       console.error('Error:', error);
     }
   };
+
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+  
+    // Add leading zero if month or day is less than 10
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+  
+    return `${year}-${month}-${day}`;
+  };
+  
   
 
   // Variable store options for the selecting age 
@@ -116,7 +134,15 @@ const SignUpVolunteer = () => {
 
         {/* release date */}
         <label className="label" htmlFor="releaseDate">{t("releaseDate")}:</label>
-        <input type="date" id="releaseDate" name="releaseDate" value={formData.releaseDate} onChange={handleInputChange} required />
+        <input 
+          type="date" 
+          id="releaseDate" 
+          name="releaseDate" 
+          value={formData.releaseDate} 
+          onChange={handleInputChange} 
+          max={getCurrentDate()} 
+          required 
+        />
 
         {/* Service */}
         <label className="label" htmlFor="service">{t("service")}:</label>
