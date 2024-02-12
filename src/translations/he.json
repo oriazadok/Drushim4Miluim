@@ -54,8 +54,11 @@
     "filter": "סנן",
     "volunteers": "מתנדבים",
     "immediate": "מיידי",
+    "notImmediate": "לא מיידי",
     "inTwoWeeks": "בשבועיים",
-    "inMonth": "בחודש"
-
+    "inMonth": "בחודש",
+    "edit": "ערוך",
+    "update": "עדכן",
+    "successful": "עודכן בהצלחה!"
 }
   

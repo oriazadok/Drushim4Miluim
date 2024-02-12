@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../style/Profile.css";
 import { useNavigate } from "react-router-dom";
 import Navigator from "../components/Navigator";
+// Translation
+import { useTranslation } from 'react-i18next';
 
 const RecruiterProfile = () => {
+  const { t } = useTranslation();   // translation
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   const [editMode, setEditMode] = useState(false);
@@ -60,7 +63,7 @@ const RecruiterProfile = () => {
         setUserData(responseData);
         setEditMode(false);
         setEditSuccess(true);
-        setTimeout(() => setEditSuccess(false), 1000);
+        setTimeout(() => setEditSuccess(false), 2000);
       } else {
         console.error(`HTTP error! Status: ${response.status}`);
       }
@@ -73,26 +76,136 @@ const RecruiterProfile = () => {
     <div>
       <Navigator />
       <div className="profile-container">
-        <h2>Volunteer Profile</h2>
-        {editSuccess && <p className="success-message">Edit successful!</p>}
+        <h2>{t("profile")}</h2>
+        {editSuccess && <p className="success-message">{t("successful")}</p>}
         <div className="profile-details">
           {userData && (
             <div>
-              <p><strong>Name:</strong> {editMode ? <input type="text" name="name" value={updatedUserData.name} onChange={handleInputChange} /> : userData.name}</p>
-              <p><strong>Email:</strong> {userData.email}</p>
-              <p><strong>Phone Number:</strong> {editMode ? <input type="tel" name="phoneNumber" value={updatedUserData.phoneNumber} onChange={handleInputChange} /> : userData.phoneNumber}</p>
-              <p><strong>releaseDate:</strong> {editMode ? <input type="releaseDate" name="releaseDate" value={updatedUserData.releaseDate} onChange={handleInputChange} /> : userData.releaseDate}</p>
-              <p><strong>service:</strong> {editMode ? <input type="service" name="service" value={updatedUserData.service} onChange={handleInputChange} /> : userData.service}</p>
-              <p><strong>rovai:</strong> {editMode ? <input type="rovai" name="rovai" value={updatedUserData.rovai} onChange={handleInputChange} /> : userData.rovai}</p>
-              <p><strong>credentials:</strong> {editMode ? <input type="credentials" name="credentials" value={updatedUserData.credentials} onChange={handleInputChange} /> : userData.credentials}</p>
-              <p><strong>profile:</strong> {editMode ? <input type="profile" name="profile" value={updatedUserData.profile} onChange={handleInputChange} /> : userData.profile}</p>
-              <p><strong>age:</strong> {editMode ? <input type="age" name="age" value={updatedUserData.age} onChange={handleInputChange} /> : userData.age}</p>
-              <p><strong>region:</strong> {editMode ? <input type="region" name="region" value={updatedUserData.region} onChange={handleInputChange} /> : userData.region}</p>
+              <p>
+                <strong>{t("name")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="text"
+                    name="name"
+                    value={updatedUserData.name}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.name
+                )}
+              </p>
+              <p>
+                <strong>{t("email")}:</strong> {userData.email}
+              </p>
+              <p>
+                <strong>{t("phone")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={updatedUserData.phoneNumber}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.phoneNumber
+                )}
+              </p>
+              <p>
+                <strong>{t("releaseDate")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="releaseDate"
+                    name="releaseDate"
+                    value={updatedUserData.releaseDate}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.releaseDate
+                )}
+              </p>
+              <p>
+                <strong>{t("service")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="service"
+                    name="service"
+                    value={updatedUserData.service}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.service
+                )}
+              </p>
+              <p>
+                <strong>{t("rovai")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="rovai"
+                    name="rovai"
+                    value={updatedUserData.rovai}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.rovai
+                )}
+              </p>
+              <p>
+                <strong>{t("credentials")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="credentials"
+                    name="credentials"
+                    value={updatedUserData.credentials}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.credentials
+                )}
+              </p>
+              <p>
+                <strong>{t("profile")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="profile"
+                    name="profile"
+                    value={updatedUserData.profile}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.profile
+                )}
+              </p>
+              <p>
+                <strong>{t("age")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="age"
+                    name="age"
+                    value={updatedUserData.age}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.age
+                )}
+              </p>
+              <p>
+                <strong>{t("region")}:</strong>{" "}
+                {editMode ? (
+                  <input
+                    type="region"
+                    name="region"
+                    value={updatedUserData.region}
+                    onChange={handleInputChange}
+                  />
+                ) : (
+                  userData.region
+                )}
+              </p>
             </div>
           )}
         </div>
-        {!editMode && <button onClick={() => setEditMode(true)}>Edit</button>}
-        {editMode && <button onClick={handleSubmit}>Update</button>}
+        {!editMode && <button onClick={() => setEditMode(true)}>{t("edit")}</button>}
+        {editMode && <button onClick={handleSubmit}>{t("update")}</button>}
       </div>
     </div>
   );
