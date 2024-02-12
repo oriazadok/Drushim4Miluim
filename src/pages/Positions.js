@@ -100,36 +100,34 @@ const Positions = () => {
   return (
     <div>
       <Navigator/>
-      <h1>My Positions</h1>
-      <div>
+      <h1>המודעות שלי</h1>
+      {/* <div>
         <input
           type="text"
           value={filter}
           onChange={handleFilterChange}
           placeholder="חיפוש מודעה"
         />
-      </div>
+      </div> */}
       <div className="button-container">
         {/* Visibility of "Filter" button */}
-        {!showFilter && (
+        {/* {!showFilter && (
           <button className="toggle-button" onClick={filter}>סנן</button>
-        )}
-
-        
+        )} */}
 
         {/* Visibility of "Filter" */}
-        {showFilter && (
+        {/* {showFilter && (
             <PositionsFilter
               onFilterChange={handleFilterChange}
               handleFilter={filter}
               onCancel={cancelFilter}
               initialFilters={filterData}
             />
-        )}
+        )} */}
       </div>
       
       {/* Visibility of "FilterData" */}
-      {!showFilter && shouldShowFilterData && (
+      {/* {!showFilter && shouldShowFilterData && (
         <FilterData data={filterData} />
       )}
 
@@ -141,10 +139,10 @@ const Positions = () => {
             ))}
           </div>
         )}
-      </LastPositions>
+      </LastPositions> */}
       <div>
-        <button onClick={handlePreviousClick}>{t('previous')}</button>
-        <button onClick={handleNextClick}>{t('next')}</button>
+        {/* <button onClick={handlePreviousClick}>{t('previous')}</button>
+        <button onClick={handleNextClick}>{t('next')}</button> */}
       </div>
     </div>
   );

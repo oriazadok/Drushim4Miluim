@@ -55,6 +55,23 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
     onFilterChange('ageTo', event.target.value);
   };
 
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    let month = today.getMonth() + 1;
+    let day = today.getDate();
+  
+    // Add leading zero if month or day is less than 10
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+  
+    return `${year}-${month}-${day}`;
+  };
+
   const ageOptions = [<option key="" value=""></option>];
   for (let age = 20; age <= 60; age++) {
     ageOptions.push(
@@ -118,7 +135,8 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
           id="releaseDate" 
           name="releaseDate" 
           value={releaseDate} 
-          onChange={handleReleaseDate} />
+          onChange={handleReleaseDate}
+          max={getCurrentDate()}  />
 
       </div>
 
