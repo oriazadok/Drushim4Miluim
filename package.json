@@ -13,6 +13,7 @@
     "react-i18next": "^14.0.1",
     "react-router-dom": "^6.22.0",
     "react-scripts": "^5.0.1",
+    "safe-regex-test": "^1.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

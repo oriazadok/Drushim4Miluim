@@ -9,6 +9,7 @@ const PositionCard = ( position ) => {
 
   return (
     <div>
+      cosomo
       <p>{position.positionTitle}</p>
       <p>{t(position.location)}</p>
       <p>{t(position.service)}</p>
