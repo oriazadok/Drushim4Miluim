@@ -96,9 +96,9 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           value={positionData.service} 
           onChange={handleChange} >
           <option value=""></option>
-          <option value="lohem">לוחם</option>
-          <option value="tomeh">תומך</option>
-          <option value="job">ג'וב</option>
+          <option value={t("lohem")}>{t("lohem")}</option>
+          <option value={t("tomeh")}>{t("tomeh")}</option>
+          <option value={t("job")}>{t("job")}</option>
         </select>
 
         <label className="label" htmlFor="availability">זמינות</label>
@@ -113,7 +113,7 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           <option value={t("notImmediate")}>{t("notImmediate")}</option>
         </select>
 
-        <label htmlFor="jobType">סוג תפקיד</label>
+        <label htmlFor={t("jobType")}>זמינות</label>
         <select 
           className="select-input" 
           id="jobType" 
@@ -121,8 +121,8 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           value={positionData.jobType} 
           onChange={handleChange} >
           <option value=""></option>
-          <option value="permanent">קבוע</option>
-          <option value="temporary">זמני</option>
+            <option value={t("permanent")}>{t("permanent")}</option>
+          <option value={t("temporary")}>{t("temporary")}</option>
         </select>
         
 
@@ -134,9 +134,9 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           value={positionData.location} 
           onChange={handleChange} >
           <option value=""></option>
-          <option value="north">צפון</option>
-          <option value="center">מרכז</option>
-          <option value="south">דרום</option>
+          <option value={t("north")}>{t("north")}</option>
+          <option value={t("center")}>{t("center")}</option>
+          <option value={t("south")}>{t("south")}</option>
         </select>
 
         <label htmlFor="jobDescription">תאור כללי</label>
