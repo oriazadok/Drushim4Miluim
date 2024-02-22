@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Volunteer = ({ name, description }) => {
+const Volunteer = ( volunteer ) => {
   return (
     <div className="volunteer-card">
-      <h3>{name}</h3>
-      <p>{description}</p>
+      <h3>{volunteer.name}</h3>
+      <p>{volunteer.region}</p>
+      <p>{volunteer.service}</p>
     </div>
   );
 };

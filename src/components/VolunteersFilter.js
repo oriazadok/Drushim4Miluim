@@ -12,7 +12,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
   const { t } = useTranslation();
 
-  const [location, setLocation] = useState(initialFilters.location || '');
+  const [region, setRegion] = useState(initialFilters.region || '');
   const [service, setService] = useState(initialFilters.service || '');
   const [releaseDate, setReleaseDate] = useState(initialFilters.releaseDate || '');
   const [rovai, setRovai] = useState(initialFilters.rovai || '');
@@ -21,8 +21,8 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
   const [ageTo, setAgeTo] = useState(initialFilters.ageTo || '');
 
   const handleLocation = (event) => {
-    setLocation(event.target.value);
-    onFilterChange('location', event.target.value);
+    setRegion(event.target.value);
+    onFilterChange('region', event.target.value);
   };
 
   const handleService = (event) => {
@@ -84,7 +84,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
   return (
     <div className="filter-container">
-      <h2>סנן</h2>
+      <h2>{t("filter")}</h2>
 
       {/* Location */}
       <div className="filter-section">
@@ -94,9 +94,9 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
         <select
           className="filter-select"
-          id="location"
-          name="location"
-          value={location}
+          id="region"
+          name="region"
+          value={region}
           onChange={handleLocation}
         >
           <option value=""></option>
@@ -108,9 +108,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
       {/* Service */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="service">
-          סוג שירות
-        </label>
+        <label className="filter-label" htmlFor="service">{t("service")}</label>
         <select
           className="filter-select"
           id="service"
@@ -127,9 +125,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
       {/* release date */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="releaseDate">
-          תאריך שחרור
-        </label>
+        <label className="filter-label" htmlFor="releaseDate">{t("releaseDate")}</label>
         <input 
           type="date" 
           id="releaseDate" 
@@ -142,9 +138,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
       {/* Rovai */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="rovai">
-          רובאי
-        </label>
+        <label className="filter-label" htmlFor="rovai">{t("rovai")}</label>
         <select
           className="filter-select"
           id="rovai"
@@ -166,9 +160,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
       {/* Profile */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="profile">
-          פרופיל
-        </label>
+        <label className="filter-label" htmlFor="profile">{t("profile")}</label>
         <select
           className="filter-select"
           id="profile"
@@ -190,20 +182,20 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
       {/* age */}
       <div className="filter-section">
-        <label className="filter-label" htmlFor="age">גיל</label>
-        <label htmlFor="from">מ</label>
+        <label className="filter-label" htmlFor="age">{t("age")}</label>
+        <label htmlFor="from">{t("ageFrom")}</label>
         <select className="select-input" id="age" name="age" value={ageFrom} onChange={handleAgeFrom} >
           {ageOptions}
         </select>
 
-        <label htmlFor="to">עד</label>
+        <label htmlFor="to">{t("ageTo")}</label>
         <select className="select-input" id="age" name="age" value={ageTo} onChange={handleAgeTo} >
           {ageOptions}
         </select>
       </div>
 
-      <button onClick={handleFilter}>סנן</button>
-      <button onClick={onCancel}>בטל</button>
+      <button onClick={handleFilter}>{t("filter")}</button>
+      <button onClick={onCancel}>{t("cancel")}</button>
     </div>
 
   );

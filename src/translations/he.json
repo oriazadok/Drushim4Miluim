@@ -52,6 +52,7 @@
     "next": "הבא",
     "previous": "הקודם",
     "filter": "סנן",
+    "filters": "סינונים:",
     "volunteers": "מתנדבים",
     "immediate": "מיידי",
     "notImmediate": "לא מיידי",
@@ -62,6 +63,7 @@
     "successful": "עודכן בהצלחה!",
     "myPositions": "המודעות שלי",
     "permanent": "קבוע",
-    "temporary": "זמני" 
+    "temporary": "זמני",
+    "cancel": "בטל"
 }
   

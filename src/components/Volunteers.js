@@ -1,42 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 // import for translation
 import { useTranslation } from 'react-i18next';
 
 import Volunteer from './Volunteer';
+import VolunteerCard from './VolunteerCard';
 
 import "../style/Volunteers.css"
 
-const Volunteers = () => {
+const Volunteers = ({ volunteersData }) => {
+
+  console.log("volunteersData: ", volunteersData);
 
   const { t } = useTranslation();   // translation
 
-  const [volunteersData, setVolunteersData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/volunteers');
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        // Parse the response JSON
-        const data = await response.json();
-        console.log("data is: ", data);
-        
-        // Set the state with the parsed data
-        setVolunteersData(data);
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
 
   const handleVolunteerClick = (volunteer) => {
@@ -66,7 +43,7 @@ const Volunteers = () => {
       {selectedVolunteer && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <Volunteer {...selectedVolunteer} />
+            <VolunteerCard {...selectedVolunteer} />
           </div>
         </div>
       )}

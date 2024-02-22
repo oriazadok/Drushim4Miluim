@@ -12,7 +12,7 @@ const FilteredData = ({ data }) => {
 
   return (
     <div className="filtered-data-container">
-      <h2>סינונים:</h2>
+      <h2>{t("filters")}</h2>
       {/* Display selected filter data in a row */}
       {Object.keys(data).length > 0 && (
         <div className="filtered-row">
