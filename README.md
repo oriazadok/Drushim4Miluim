@@ -1,6 +1,6 @@
 # Drushim4Miluim
 
-This project was developed in the third year of Ariel University's Department of Computer Science's Computer Software Engineering course course in 2024.
+This project was developed in the third year of Ariel University's Department of Computer Science's Computer Software Engineering course in 2024.
 
 Project site: https://github.com/oriazadok/Drushim4Miluim
 
