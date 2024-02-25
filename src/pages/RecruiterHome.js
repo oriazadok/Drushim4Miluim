@@ -98,9 +98,10 @@ const RecruiterHome = () => {
 
       {/* Navigation bar */}
       <Navigator />
-      <h1>{t("hello")} {userData.name || "Guest"}</h1>
+      <h1>{t("hello")} {userData.name || "Guest"}!</h1>
+      <p>המשרות האחרונות שלי :</p>
 
-      <LastPositions positions={positions} />
+      <LastPositions positions={positions.slice(-5)} /> {/*show the last 5 positions the recruiter post*/}
 
       {/* Visability of AddPosition */}
       {!showAddPosition && (
