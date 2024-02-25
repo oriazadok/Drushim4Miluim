@@ -4,16 +4,12 @@ This project was developed in the third year of Ariel University's Department of
 
 Project site: https://github.com/oriazadok/Drushim4Miluim
 
-Made by:
+#### Authors
 
+- [Oria Zadok](https://www.github.com/oriazadok)
+- [Sagi Yosef Azulay](https://www.github.com/sagir567)
+- [Noy Rosenbaum](https://www.github.com/noyrosenbaum)
+- [Tal Tosiano](https://www.github.com/taltosiano)
+- [Aaron Luchan](https://www.github.com/aronl096)
 
-
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
