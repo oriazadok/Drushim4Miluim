@@ -49,6 +49,7 @@
     "addPosition": "הוסף משרה",
     "addNewPosition": "הוסף משרה חדשה",
     "availability": "זמינות",
+    "jobType": "סוג המשרה",
     "next": "הבא",
     "previous": "הקודם",
     "filter": "סנן",
@@ -59,11 +60,16 @@
     "inTwoWeeks": "בשבועיים",
     "inMonth": "בחודש",
     "edit": "ערוך",
+    "delete": "מחק",
     "update": "עדכן",
     "successful": "עודכן בהצלחה!",
     "myPositions": "המודעות שלי",
+    "positionTitle": "תיאור משרה",
+    "unitName": "יחידה",
+    "jobDescription": "תיאור כללי",
     "permanent": "קבוע",
     "temporary": "זמני",
-    "cancel": "בטל"
+    "cancel": "בטל",
+    "positionCandidates": "מועמדים למשרה"
 }
   

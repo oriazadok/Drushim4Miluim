@@ -158,21 +158,6 @@ const Positions = () => {
       <h1>{t("myPositions")}</h1>
       <div className="button-container">
 
-        {/* Visibility of AddPosition */}
-        {!showAddPosition && (
-          <button className="toggle-button" onClick={addPosition}>{t("addPosition")}</button>
-        )}
-
-        {/* Visability of AddPosition */}
-        {showAddPosition && (
-            <AddPosition
-              id={userData._id}
-              type={userData.type}
-              onPositionAdded={handlePositionAdded}
-              onCancel={handleCancelAddPosition}
-            />
-        )}
-
         {/* Visibility of "Filter" button */}
         {!showFilter && (
           <button className="toggle-button" onClick={filter}>{t("filter")}</button>

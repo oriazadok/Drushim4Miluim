@@ -42,7 +42,7 @@ const Navigator = () => {
         <span role="img" aria-label="Bell">🔔</span>
       </button>
 
-      <Link to={userData && userData.type === "recruiters" ? "/positions" : userData.type === "volunteers" ? "/positions" : "/signin"}>{t("messages")}</Link>
+      <Link to={userData && userData.type === "recruiters" ? "/recruiterPositions" : userData.type === "volunteers" ? "/volunteerPositions" : "/signin"}>{t("messages")}</Link>
       <Link to={userData && userData.type === "recruiters" ? "/recruiterProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
       
       {Object.keys(userData).length === 0 ? (

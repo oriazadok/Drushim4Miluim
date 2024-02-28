@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react'
 
+// For navigation between pages
+import { useNavigate } from 'react-router-dom';
 
 // import for translation
 import { useTranslation } from 'react-i18next';
 
 import Position from './Position';
-import PositionCard from './PositionCard';
+import RecruiterPosCard from './RecruiterPosCard';
+import VolunteerPosCard from './VolunteerPosCard';
 
 const UserPositions = ({ positions }) => {
 
     const { t } = useTranslation();   // translation
+    const navigate = useNavigate();   // navigation
+  
     const [positionsData, setPositionsData] = useState([]);
     const [selectedPosition, setSelectedPosition] = useState(null);
     const[page, setPage] = useState(0);  // Manage page number
-    
+
+    const [userData, setUserData] = useState(null);  // Store userData values
+
 
     useEffect(() => {
       const fetchData = async () => {
@@ -50,6 +57,26 @@ const UserPositions = ({ positions }) => {
     }, [positions]);
 
 
+    useEffect(() => {
+      const storedUserData = localStorage.getItem('userData');
+      const parsedUserData = storedUserData ? JSON.parse(storedUserData) : null;
+
+      // Call navigate inside useEffect with a condition to prevent infinite updates
+      if (parsedUserData === null) {
+        navigate("/signin");
+      }
+
+      setUserData(parsedUserData);
+      
+    }, [navigate]); // Only include navigate as a dependency
+    
+    if (userData === null) {
+      return null;
+    }
+    
+
+    
+
     ///////////////////////////////////////////////////////////////
   // those functions are related to the PositionsFilter component
   ///////////////////////////////////////////////////////////////
@@ -69,6 +96,8 @@ const UserPositions = ({ positions }) => {
   const closeModal = () => {
     setSelectedPosition(null);
   };
+
+  console.log("ususussssss: ", userData);
      
   return (
     <div>
@@ -89,7 +118,8 @@ const UserPositions = ({ positions }) => {
       {selectedPosition && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <PositionCard {...selectedPosition} />
+            {userData.type === "recruiters" ? <RecruiterPosCard {...selectedPosition} /> : <VolunteerPosCard {...selectedPosition} />}
+            
           </div>
         </div>
       )}
