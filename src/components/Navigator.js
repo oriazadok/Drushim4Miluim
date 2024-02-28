@@ -22,6 +22,7 @@ const Navigator = () => {
       }
     }
   }, []); 
+  
 
   const handleLogout = () => {
     // Clear userData from localStorage and set state to {}
@@ -32,15 +33,17 @@ const Navigator = () => {
   
   return (
     <div className="navbar">
-      <Link to={userData && userData.type === "recruiters" ? "/recruiterHome" : userData.type === "volunteers" ? "/volunteerHome" : "/signin"}>{t("home")}</Link>
+      {/*Opens the following pages depending on whether they recruiters or volunteers */}
+      <Link to={"/"}>{t("home")}</Link>
+      <Link to={userData && userData.type === "recruiters" ? "/recruiterHome" : userData.type === "volunteers" ? "/volunteerHome" : "/signin"}>{t("personalArea")}</Link>
       <Link to={userData && userData.type === "recruiters" ? "/recruiterSearch" : userData.type === "volunteers" ? "/volunteerSearch" : "/signin"}>{t("search")}</Link>
-      <Link to="/positions">{t("messages")}</Link>
 
       <button aria-label="Notifications">
         <span role="img" aria-label="Bell">🔔</span>
       </button>
-      
-      <Link to={userData && userData.type === "recruiters" ? "/recruiterHProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
+
+      <Link to={userData && userData.type === "recruiters" ? "/recruiterPositions" : userData.type === "volunteers" ? "/volunteerPositions" : "/signin"}>{t("messages")}</Link>
+      <Link to={userData && userData.type === "recruiters" ? "/recruiterProfile" : userData.type === "volunteers" ? "/volunteerProfile" : "/signin"}>{t("profile")}</Link>
       
       {Object.keys(userData).length === 0 ? (
          // If userData doesn't exist, render the Sign In link

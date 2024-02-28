@@ -1,41 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+
+// import for translation
+import { useTranslation } from 'react-i18next';
+
 import Volunteer from './Volunteer';
+import VolunteerCard from './VolunteerCard';
 
 import "../style/Volunteers.css"
 
-const Volunteers = () => {
+const Volunteers = ({ volunteersData }) => {
 
-  const [volunteersData, setVolunteersData] = useState([]);
+  console.log("volunteersData: ", volunteersData);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/volunteers');
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        // Parse the response JSON
-        const data = await response.json();
-        console.log("data is: ", data);
-        
-        // Set the state with the parsed data
-        setVolunteersData(data);
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  
-  // const volunteersData = [
-  //   { id: 1, name: 'Volunteer 1', description: 'Description for Volunteer 1' },
-  //   { id: 2, name: 'Volunteer 2', description: 'Description for Volunteer 2' },
-  //   // Add more volunteers as needed
-  // ];
+  const { t } = useTranslation();   // translation
 
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
 
@@ -49,7 +26,7 @@ const Volunteers = () => {
 
   return (
     <div className="volunteers-container">
-      <h2>Volunteers</h2>
+      <h2>{t("volunteers")}</h2>
       <div className="volunteer-list">
         {volunteersData.map((volunteer) => (
           <div
@@ -66,7 +43,7 @@ const Volunteers = () => {
       {selectedVolunteer && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <Volunteer {...selectedVolunteer} />
+            <VolunteerCard {...selectedVolunteer} />
           </div>
         </div>
       )}

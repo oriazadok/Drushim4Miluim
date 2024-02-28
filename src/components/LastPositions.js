@@ -1,17 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import PositionCard from './PositionCard';
+
+// For navigation between pages
+import { useNavigate } from 'react-router-dom';
+
+
 import Position from './Position';
+import RecruiterPosCard from './RecruiterPosCard';
+import VolunteerPosCard from './VolunteerPosCard';
 
 import "../style/LastPositions.css"
 
 const LastPositions = ({ positions }) => {
+
+    const navigate = useNavigate();   // navigation
+    
+    const [userData, setUserData] = useState(null);  // Store userData values
     const [positionsData, setPositionsData] = useState([]);
     const [selectedPosition, setSelectedPosition] = useState(null);
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // console.log("poss: ", positions)
+                console.log("cosomo poss: ", positions)
                 const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
                     method: 'POST',
                     headers: {
@@ -49,6 +60,24 @@ const LastPositions = ({ positions }) => {
         fetchData();
     }, [positions]);
 
+    useEffect(() => {
+        const storedUserData = localStorage.getItem('userData');
+        const parsedUserData = storedUserData ? JSON.parse(storedUserData) : null;
+  
+        // Call navigate inside useEffect with a condition to prevent infinite updates
+        if (parsedUserData === null) {
+          navigate("/signin");
+        }
+  
+        setUserData(parsedUserData);
+        
+      }, [navigate]); // Only include navigate as a dependency
+      
+      if (userData === null) {
+        return null;
+      }
+      
+
     const handlePositionClick = (position) => {
         setSelectedPosition(position);
     };
@@ -72,7 +101,7 @@ const LastPositions = ({ positions }) => {
                     className='position-list-item'
                     onClick={() => handlePositionClick(position)}
                 >
-                    <PositionCard {...position} />
+                    <Position {...position} />
                 </div>
             ))}
             </div>
@@ -81,7 +110,8 @@ const LastPositions = ({ positions }) => {
             {selectedPosition && (
                 <div className="modal" onClick={closeModal}>
                 <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                    <Position {...selectedPosition} />
+                {userData.type === "recruiters" ? <RecruiterPosCard {...selectedPosition} /> : <VolunteerPosCard {...selectedPosition} />}
+                    
                 </div>
                 </div>
             )}
