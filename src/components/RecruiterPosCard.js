@@ -11,13 +11,13 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
     const navigate = useNavigate();
     const [editMode, setEditMode] = useState(false);
     const [updatedPositionData, setUpdatedPositionData] = useState({
-        positionTitle: '',
-        unitName: '',
-        service: '',
-        availability: '',
-        jobType: '',
-        location: '',
-        jobDescription: '',
+        positionTitle: positionData.positionTitle,
+        unitName: positionData.unitName,
+        service: positionData.service,
+        availability: positionData.availability,
+        jobType: positionData.jobType,
+        location: positionData.location,
+        jobDescription: positionData.jobDescription,
     });
     const [editSuccess, setEditSuccess] = useState(false);
 
@@ -95,7 +95,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
         body: JSON.stringify({
           _id: positionData._id,
           type: positionData.type,
-          updatedPositionData,
+          updatedPositionData: updatedPositionData,
         }),
       });
 
@@ -175,7 +175,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
                   <input
                     type="text"
                     name="positionTitle"
-                    value={updatedPositionData.positionTitle || positionData.positionTitle}
+                    value={updatedPositionData.positionTitle}
                     onChange={handleInputChange}
                   />
                 ) : (
@@ -189,7 +189,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
                     <input
                     type="text"
                     name="unitName"
-                    value={updatedPositionData.unitName || positionData.unitName}
+                    value={updatedPositionData.unitName}
                     onChange={handleInputChange}
                     />
                 ) : (
@@ -373,7 +373,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
                         <input
                             type="text"
                             name="jobDescription"
-                            value={updatedPositionData.jobDescription || positionData.jobDescription}
+                            value={updatedPositionData.jobDescription}
                             onChange={handleInputChange}
                         />
                     ) : (

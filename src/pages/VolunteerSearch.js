@@ -4,16 +4,10 @@ import Navigator from '../components/Navigator';
 
 import PositionFilter from '../components/PositionsFilter';
 import FilterData from '../components/FilterData';
-<<<<<<< HEAD
+
 import Volunteers from '../components/Volunteers';
 import Position from '../components/Position';
-import Positions from './Positions';
 
-=======
-import Position from '../components/Position';
-
-
->>>>>>> tal
 const VolunteerSearch = () => {
   const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
   const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
