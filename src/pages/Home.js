@@ -21,16 +21,18 @@ const Home = () => {
       }
     }
   }, []); 
+  
   return (
     <div className="container"> {/* Apply a container for the elements of the page */}
       <h1 className="title">ברוכים הבאים לדרושים במילואים</h1>
-      <p className="description">במהלך מלחמת "לרבות ברזל" הוחלט על הקמת פרויקט חדש על מנת להקל
-      על הליכי הגיוס למילואים ומעבר בין יחידות שך מילואים שונות
-      הניכם מוזמנים להצטרף לקהילת "דרושים למילואים" הגדולה בארץ ובכך לתרום 
+      <p className="description">במהלך מלחמת "חרבות ברזל" הוחלט על הקמת פרויקט חדש על מנת להקל
+      על הליכי הגיוס למילואים ומעבר בין יחידות מילואים שונות.
+      הנכם מוזמנים להצטרף לקהילת "דרושים למילואים" הגדולה בארץ ובכך לתרום 
       לצבא החזק , מוסרי והאיכותי ביותר בעולם!!!</p>
-      <img src={tank} alt="Descripción de la imagen" className="image" /> {/* Add an image */}
       <Link to={userData && userData.type === "recruiters" ? "/recruiterHome" : userData.type === "volunteers" ? "/volunteerHome" : "/signin"}> 
         <button>לאיזור האישי</button>
+      </Link><Link to={"/aboutUs"}> 
+        <button>Information</button>
       </Link>
     </div>
   );
