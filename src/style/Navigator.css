@@ -1,36 +1,52 @@
 /* Add this style to your existing styles or create a new CSS file */
+@keyframes changeColor {
+  0% {
+    background-color: #3498db; 
+  }
+  50% {
+    background-color: #418cce; 
+  }
+  100% {
+    background-color: #3498db; 
+  }
+}
+
 .navbar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: #3498db;
-    color: #ffffff;
-    padding: 10px;
-  }
-  
-  .navbar a, .navbar button {
-    text-decoration: none;
-    color: #ffffff;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 0 10px;
-  }
-  
-  .navbar button {
-    font-size: 18px;
-  }
-  
-  /* Add a hover effect */
-  .navbar a:hover, .navbar button:hover {
-    background-color: #2980b9;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Add specific style for the notification icon */
-  .navbar button span {
-    font-size: 24px;
-  }
-  
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #1d73f3; /* Initial background color */
+  color: #0e5beb;
+  padding: 10px;
+  font-family: 'Roboto', sans-serif; /* Example of using a different font */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  border-bottom: 1px solid rgba(16, 15, 15, 0.2); /* Adds a bottom border */
+  animation: changeColor 15s infinite; /* Applies color change animation */
+}
+
+.navbar a, .navbar button {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 19px; /* Font size */
+  font-family: 'Roboto', sans-serif; /* Font family */
+  margin: 0 10px;
+  transition: all 0.3s ease; /* Adds transitions for hover effects */
+  border-radius: 5px; /* Adds border radius */
+  padding: 8px 12px; /* Adjusts padding for better button appearance */
+}
+
+.navbar button {
+  font-size: 19px; /* Optional font size for buttons */
+}
+
+.navbar a:hover, .navbar button:hover {
+  background-color: #2980b9;
+  box-shadow: 0 0 10px #fff; /* Adds a shine effect on hover */
+}
+
+.navbar button span {
+  font-size: 24px;
+}
