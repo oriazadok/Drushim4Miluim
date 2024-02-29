@@ -5,7 +5,7 @@ import Navigator from "../components/Navigator";
 import { useTranslation } from 'react-i18next';
 
 
-const RecruiterPosCard = ({ positionData, setPositionData }) => {
+const RecruiterPosCard = ( positionData, setPositionData ) => {
 
     console.log("possssssss: ", positionData);
 

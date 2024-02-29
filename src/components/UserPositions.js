@@ -22,29 +22,6 @@ const UserPositions = ({ positions }) => {
     const [userData, setUserData] = useState(null);  // Store userData values
 
 
-    useEffect(() => {
-      getUserPositionsData();
-    }, [positions]);
-
-
-    useEffect(() => {
-      const storedUserData = localStorage.getItem('userData');
-      const parsedUserData = storedUserData ? JSON.parse(storedUserData) : null;
-
-      // Call navigate inside useEffect with a condition to prevent infinite updates
-      if (parsedUserData === null) {
-        navigate("/signin");
-      }
-
-      setUserData(parsedUserData);
-      
-    }, [navigate]); // Only include navigate as a dependency
-    
-    if (userData === null) {
-      return null;
-    }
-
-
     const getUserPositionsData = async () => {
       try {
         const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
@@ -74,6 +51,32 @@ const UserPositions = ({ positions }) => {
         console.error('Error fetching data:', error);
       }
     };
+
+
+    useEffect(() => {
+      getUserPositionsData();
+    }, [positions]);
+
+
+    useEffect(() => {
+      const storedUserData = localStorage.getItem('userData');
+      const parsedUserData = storedUserData ? JSON.parse(storedUserData) : null;
+
+      // Call navigate inside useEffect with a condition to prevent infinite updates
+      if (parsedUserData === null) {
+        navigate("/signin");
+      }
+
+      setUserData(parsedUserData);
+      
+    }, [navigate]); // Only include navigate as a dependency
+    
+    if (userData === null) {
+      return null;
+    }
+
+
+    
 
     const reget = () => {
       getUserPositionsData();
