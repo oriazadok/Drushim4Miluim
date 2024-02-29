@@ -48,7 +48,9 @@ const RecruiterPositions = () => {
   if (userData === null) {
     return null;
   }
+  
 
+  
   const getFilterPositions = async () => {
     try {
 
