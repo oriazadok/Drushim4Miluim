@@ -14,7 +14,6 @@ import FilterData from '../components/FilterData';
 import UserPositions from '../components/UserPositions';
 
 
-
 const RecruiterPositions = () => {
 
   const { t } = useTranslation();   // translation
