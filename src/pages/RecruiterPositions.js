@@ -14,6 +14,7 @@ import FilterData from '../components/FilterData';
 import UserPositions from '../components/UserPositions';
 
 
+
 const RecruiterPositions = () => {
 
   const { t } = useTranslation();   // translation
@@ -48,9 +49,7 @@ const RecruiterPositions = () => {
   if (userData === null) {
     return null;
   }
-  
 
-  
   const getFilterPositions = async () => {
     try {
 

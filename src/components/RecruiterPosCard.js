@@ -130,6 +130,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
     // const positionCandidates {};
     
     const deletePosition = async () => {
+        setLoading(true);
         try {
             const response = await fetch('http://localhost:3001/api/deletePosition', {
               method: 'POST',
