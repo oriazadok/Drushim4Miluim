@@ -7,9 +7,12 @@ import { useTranslation } from 'react-i18next';
 
 const RecruiterPosCard = ( positionData, setPositionData ) => {
 
+    console.log("possssssss: ", positionData);
+
     const { t } = useTranslation();   // translation
     const navigate = useNavigate();
     const [editMode, setEditMode] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [updatedPositionData, setUpdatedPositionData] = useState({
         positionTitle: positionData.positionTitle,
         unitName: positionData.unitName,
@@ -39,6 +42,10 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
     //     [e.target.name]: e.target.value,
     //     });
     // };
+
+    const updateData = () => {
+        setPositionData();
+    }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -83,8 +90,9 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
 //     }
   // };
 
-  const handleSubmit = async (e) => {
+  const update = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch("http://localhost:3001/api/updatePositionData", {
         method: "POST",
@@ -99,13 +107,18 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
         }),
       });
 
+      console.log("cosomo")
+      console.log(response);
+
+      setLoading(false);
+
       if (response.ok) {
         const responseData = await response.json();
-        localStorage.setItem("userData", JSON.stringify(responseData));
-        setPositionData(responseData);
+        // localStorage.setItem("userData", JSON.stringify(responseData));
         setEditMode(false);
         setEditSuccess(true);
         setTimeout(() => setEditSuccess(false), 2000);
+        updateData();
       } else {
         console.error(`HTTP error! Status: ${response.status}`);
       }
@@ -385,7 +398,12 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
 
             </div>
             {!editMode && <button onClick={() => setEditMode(true)}>{t("edit")}</button>}
-            {editMode && <button onClick={handleSubmit}>{t("update")}</button>}
+            {editMode && <button onClick={update}>{t("update")}</button>}
+            {loading && (
+            <div className="loading-overlay">
+              <div className="loading-spinner"></div>
+            </div>
+          )}
             <button onClick={deletePosition}>{t('delete')}</button>
             {/* <button onClick={positionCandidates}>{t('positionCandidates')}</button> */}
         

@@ -22,38 +22,39 @@ const UserPositions = ({ positions }) => {
     const [userData, setUserData] = useState(null);  // Store userData values
 
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify(positions),
-          });
-    
-          if (response.ok) {
-            const data = await response.json(); // Parse JSON response
-            if (data.length === 0) {
-              return;
-            }
-    
-            console.log("data: ", data);
-    
-            // Set the state with the parsed data
-            setPositionsData(data);
-          } else {
-            console.error(`HTTP error! Status: ${response.status}`);
+    const getUserPositionsData = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify(positions),
+        });
+  
+        if (response.ok) {
+          const data = await response.json(); // Parse JSON response
+          if (data.length === 0) {
+            return;
           }
-    
-        } catch (error) {
-          console.error('Error fetching data:', error);
+  
+          console.log("data: ", data);
+  
+          // Set the state with the parsed data
+          setPositionsData(data);
+        } else {
+          console.error(`HTTP error! Status: ${response.status}`);
         }
-      };
-    
-      fetchData();
+  
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+
+    useEffect(() => {
+      getUserPositionsData();
     }, [positions]);
 
 
@@ -72,6 +73,13 @@ const UserPositions = ({ positions }) => {
     
     if (userData === null) {
       return null;
+    }
+
+
+    
+
+    const reget = () => {
+      getUserPositionsData();
     }
     
 
@@ -118,7 +126,7 @@ const UserPositions = ({ positions }) => {
       {selectedPosition && (
         <div className="modal" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            {userData.type === "recruiters" ? <RecruiterPosCard {...selectedPosition} /> : <VolunteerPosCard {...selectedPosition} />}
+            {userData.type === "recruiters" ? <RecruiterPosCard positionData={selectedPosition} setPositionData={reget} /> : <VolunteerPosCard {...selectedPosition} />}
             
           </div>
         </div>
