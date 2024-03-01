@@ -101,7 +101,7 @@ const RecruiterHome = () => {
       <h1>{t("hello")} {userData.name || "Guest"}!</h1>
       <p>המשרות האחרונות שלי :</p>
 
-      <LastPositions positions={positions.slice(-5)} /> {/*show the last 5 positions the recruiter post*/}
+     
 
       {/* Visability of AddPosition */}
       {!showAddPosition && (
@@ -117,7 +117,9 @@ const RecruiterHome = () => {
             onCancel={handleCancelAddPosition}
           />
       )}
+       <LastPositions positions={positions.slice(-5)} /> {/*show the last 5 positions the recruiter post*/}
     </div>
+    
   );
 };
 
