@@ -24,7 +24,6 @@ const UserPositions = ({ positions }) => {
 
     useEffect(() => {
 
-      console.log("poses are: ", positions);
       const fetchData = async () => {
         try {
           const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
@@ -35,7 +34,7 @@ const UserPositions = ({ positions }) => {
             credentials: 'include',
             body: JSON.stringify(positions),
           });
-    
+            
           if (response.ok) {
             const data = await response.json(); // Parse JSON response
             if (data.length === 0) {
@@ -56,7 +55,7 @@ const UserPositions = ({ positions }) => {
       };
     
       fetchData();
-    }, [positions]);
+    }, []);
 
 
     useEffect(() => {
@@ -99,8 +98,8 @@ const UserPositions = ({ positions }) => {
     setSelectedPosition(null);
   };
 
-  console.log("ususussssss: ", userData);
-     
+  console.log("poiu: ", positions)
+
   return (
     <div>
         <h2>UserPositions</h2>

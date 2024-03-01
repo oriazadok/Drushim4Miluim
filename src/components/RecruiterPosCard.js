@@ -25,7 +25,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
     const [editSuccess, setEditSuccess] = useState(false);
 
     // useEffect(() => {
-    //     const storedPositionData = localStorage.getItem("positionData");
+    //     const storedPositionData = localStorage.getItem("positgiionData");
     //     const parsedPositionData = storedPositionData ? JSON.parse(storedPositionData) : null;
     
     //     if (parsedPositionData === null) {

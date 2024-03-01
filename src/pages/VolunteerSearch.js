@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
 import Navigator from '../components/Navigator';
-
+// For navigation between pages
+import { useNavigate } from 'react-router-dom';
 import PositionFilter from '../components/PositionsFilter';
 import FilterData from '../components/FilterData';
 
-import Volunteers from '../components/Volunteers';
-import Position from '../components/Position';
+import UserPositions from '../components/UserPositions';
 
 const VolunteerSearch = () => {
-  const [showAddPosition, setShowAddPosition] = useState(false);   // Manage AddPosition visibility
+  const [userData, setUserData] = useState(null);  // Store userData valu
+  const navigate = useNavigate();   // navigation
+  const [positions, setPositions] = useState([]);  // Store user's positions values
   const [showFilter, setShowFilter] = useState(false);             // Manage Filter visibility
   const [filterData, setFilterData] = useState({                   // Manage FilterData's data
     location: '',
@@ -19,22 +20,80 @@ const VolunteerSearch = () => {
     fromAge: '',
     untilAge: '',
   });
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('userData');
+    const parsedUserData = storedUserData ? JSON.parse(storedUserData) : null;
 
-  // This fuction handle the visibility of the button and the AddPosition component
-  const addPosition = () => {
-    setShowAddPosition(!showAddPosition);
-    setShowFilter(false); // Close filter when adding a position
-  };
+    // Call navigate inside useEffect with a condition to prevent infinite updates
+    if (parsedUserData === null) {
+      navigate("/signin");
+    }
 
-  // This function transferred to the AddPosition component to handle adding position
-  const handlePositionAdded = () => {
-    setShowAddPosition(!showAddPosition);
-  };
+    setUserData(parsedUserData);
+    setPositions(parsedUserData.positions);
+    
+  }, []); // Only include navigate as a dependency
 
-  // This function transferred to the AddPosition component to handle cancle the adding position
-  const handleCancelAddPosition = () => {
-    setShowAddPosition(false);
-  };
+  const getFilterPositions = async () => {
+    try {
+
+      const query = {
+        ...filterData, // Copy the original object
+      
+      };
+      const fixedQuery = removeEmptyFields(query);
+     
+      const response = await fetch('http://localhost:3001/api/filterPosition', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(fixedQuery),
+      });
+
+      if (response.ok) {
+        const responseBody = await response.text();
+        if (responseBody.trim() === '') {
+          return;
+        }
+
+        const responseData = JSON.parse(responseBody);
+        
+      } else {
+        console.error(`HTTP error! Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  const removeEmptyFields = (obj) => {
+    for (let key in obj) {
+        // Check if the value is an object and recursively remove empty fields
+        if (typeof obj[key] === 'object' && obj[key] !== null) {
+            obj[key] = removeEmptyFields(obj[key]);
+        } else if (obj[key] === null || obj[key] === undefined || obj[key] === '') {
+            // If the value is null, undefined, or an empty string, delete the key
+            delete obj[key];
+        }
+    }
+    return obj;
+};
+
+
+
+// This function transferred to the Filter to handle filtering
+const handleFilter = () => {
+  filter();
+  getFilterPositions();
+};
+
+
+
+
+
+
+ 
 
   // This function transferred to the Filter to save the filter's data
   const handleFilterChange = (filterName, value) => {
@@ -44,7 +103,7 @@ const VolunteerSearch = () => {
   // This function transferred to the Filter to handle filtering
   const filter = () => {
     setShowFilter(!showFilter);
-    setShowAddPosition(false);    // Close AddPosition when showing filter
+      // Close AddPosition when showing filter
   };
 
   // This function transferred to the Filter to cancel the filter
@@ -55,6 +114,7 @@ const VolunteerSearch = () => {
   // for case that there is no filtering to show
   const shouldShowFilterData = Object.values(filterData).some((value) => value !== '');
 
+  console.log("posin: ", positions);
   return (
     <div className="volunteers-profile-container">
       <Navigator />
@@ -70,7 +130,7 @@ const VolunteerSearch = () => {
         {showFilter && (
             <PositionFilter
               onFilterChange={handleFilterChange}
-              handleFilter={filter}
+              handleFilter={handleFilter}
               onCancel={cancelFilter}
               initialFilters={filterData}
             />
@@ -82,7 +142,7 @@ const VolunteerSearch = () => {
         <FilterData data={filterData} />
       )}
 
-      <Position />
+      <UserPositions positions={positions}/>
     </div>
   );
 };

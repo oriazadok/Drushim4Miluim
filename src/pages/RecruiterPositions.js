@@ -51,6 +51,7 @@ const RecruiterPositions = () => {
   }
 
   const getFilterPositions = async () => {
+    console.log("filtering");
     try {
 
       const query = {
@@ -75,6 +76,8 @@ const RecruiterPositions = () => {
         }
 
         const responseData = JSON.parse(responseBody);
+        console.log("res: ", responseData);
+        setPositions(responseData);
         
       } else {
         console.error(`HTTP error! Status: ${response.status}`);

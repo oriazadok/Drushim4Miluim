@@ -107,7 +107,6 @@ const RecruiterHome = () => {
       {!showAddPosition && (
         <button className="toggle-button" onClick={addPosition}>{t("addPosition")}</button>
       )}
-
       {/* Visability of AddPosition */}
       {showAddPosition && (
           <AddPosition

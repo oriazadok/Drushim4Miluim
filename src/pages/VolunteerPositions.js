@@ -46,9 +46,7 @@ const Positions = () => {
     if (parsedUserData === null) {
       navigate("/signin");
     }
-
-    console.log("fucj: ", parsedUserData.positions);
-
+    
     setUserData(parsedUserData);
     setPositions(parsedUserData.positions);
     
@@ -83,6 +81,7 @@ const Positions = () => {
         }
 
         const responseData = JSON.parse(responseBody);
+        setPositions(responseData);
         
       } else {
         console.error(`HTTP error! Status: ${response.status}`);
@@ -152,7 +151,6 @@ const Positions = () => {
   
   // for case that there is no filtering to show
   const shouldShowFilterData = Object.values(filterData).some((value) => value !== '');
-
 
   return (
     <div>
