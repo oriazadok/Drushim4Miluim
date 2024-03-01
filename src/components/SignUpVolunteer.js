@@ -25,6 +25,7 @@ const SignUpVolunteer = () => {
     profile: '',
     age: '',
     region: '',
+    positions: []
   });
 
   // Function to handle form input changes

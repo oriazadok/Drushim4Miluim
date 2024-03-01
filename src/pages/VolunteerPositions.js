@@ -47,6 +47,8 @@ const Positions = () => {
       navigate("/signin");
     }
 
+    console.log("fucj: ", parsedUserData.positions);
+
     setUserData(parsedUserData);
     setPositions(parsedUserData.positions);
     

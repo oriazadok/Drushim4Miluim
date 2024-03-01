@@ -14,7 +14,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
 
   const [region, setRegion] = useState(initialFilters.region || '');
   const [service, setService] = useState(initialFilters.service || '');
-  const [releaseDate, setReleaseDate] = useState(initialFilters.releaseDate || '');
+  // const [releaseDate, setReleaseDate] = useState(initialFilters.releaseDate || '');
   const [rovai, setRovai] = useState(initialFilters.rovai || '');
   const [profile, setProfile] = useState(initialFilters.profile || '');
   const [ageFrom, setAgeFrom] = useState(initialFilters.ageFrom || '');
@@ -30,10 +30,10 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
     onFilterChange('service', event.target.value);
   };
 
-  const handleReleaseDate = (event) => {
-    setReleaseDate(event.target.value);
-    onFilterChange('releaseDate', event.target.value);
-  };
+  // const handleReleaseDate = (event) => {
+  //   setReleaseDate(event.target.value);
+  //   onFilterChange('releaseDate', event.target.value);
+  // };
 
   const handleRovai = (event) => {
     setRovai(event.target.value);
@@ -55,22 +55,22 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
     onFilterChange('ageTo', event.target.value);
   };
 
-  const getCurrentDate = () => {
-    const today = new Date();
-    const year = today.getFullYear();
-    let month = today.getMonth() + 1;
-    let day = today.getDate();
+  // const getCurrentDate = () => {
+  //   const today = new Date();
+  //   const year = today.getFullYear();
+  //   let month = today.getMonth() + 1;
+  //   let day = today.getDate();
   
-    // Add leading zero if month or day is less than 10
-    if (month < 10) {
-      month = '0' + month;
-    }
-    if (day < 10) {
-      day = '0' + day;
-    }
+  //   // Add leading zero if month or day is less than 10
+  //   if (month < 10) {
+  //     month = '0' + month;
+  //   }
+  //   if (day < 10) {
+  //     day = '0' + day;
+  //   }
   
-    return `${year}-${month}-${day}`;
-  };
+  //   return `${year}-${month}-${day}`;
+  // };
 
   const ageOptions = [<option key="" value=""></option>];
   for (let age = 20; age <= 60; age++) {
@@ -124,7 +124,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
       </div>
 
       {/* release date */}
-      <div className="filter-section">
+      {/* <div className="filter-section">
         <label className="filter-label" htmlFor="releaseDate">{t("releaseDate")}</label>
         <input 
           type="date" 
@@ -134,7 +134,7 @@ const VolunteersFilter = ({ onFilterChange, handleFilter, onCancel, initialFilte
           onChange={handleReleaseDate}
           max={getCurrentDate()}  />
 
-      </div>
+      </div> */}
 
       {/* Rovai */}
       <div className="filter-section">

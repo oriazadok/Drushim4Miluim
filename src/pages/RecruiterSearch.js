@@ -19,7 +19,7 @@ const RecruiterSearch = () => {
     // Manage FilterData's data
     region: '',
     service: '',
-    releaseDate: '',
+    // releaseDate: '',
     rovai: '',
     profile: '',
     ageFrom: '',

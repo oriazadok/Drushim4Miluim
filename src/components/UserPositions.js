@@ -23,6 +23,8 @@ const UserPositions = ({ positions }) => {
 
 
     useEffect(() => {
+
+      console.log("poses are: ", positions);
       const fetchData = async () => {
         try {
           const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
