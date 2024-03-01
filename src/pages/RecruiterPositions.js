@@ -8,20 +8,14 @@ import { useTranslation } from 'react-i18next';
 
 // Navigation bar Component
 import Navigator from '../components/Navigator';
-
-
 import AddPosition from '../components/AddPosition';
-
-
 import PositionsFilter from '../components/PositionsFilter';
-
 import FilterData from '../components/FilterData';
-
 import UserPositions from '../components/UserPositions';
 
 
 
-const Positions = () => {
+const RecruiterPositions = () => {
 
   const { t } = useTranslation();   // translation
   const navigate = useNavigate();   // navigation
@@ -151,7 +145,6 @@ const Positions = () => {
   // for case that there is no filtering to show
   const shouldShowFilterData = Object.values(filterData).some((value) => value !== '');
 
-
   return (
     <div>
       <Navigator/>
@@ -199,4 +192,4 @@ const Positions = () => {
   );
 };
 
-export default Positions;
+export default RecruiterPositions;

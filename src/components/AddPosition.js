@@ -113,7 +113,7 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           <option value={t("notImmediate")}>{t("notImmediate")}</option>
         </select>
 
-        <label htmlFor={t("jobType")}>זמינות</label>
+        <label htmlFor={t("jobType")}>סוג המשרה</label>
         <select 
           className="select-input" 
           id="jobType" 
