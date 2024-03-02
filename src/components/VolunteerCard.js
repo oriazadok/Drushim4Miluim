@@ -16,6 +16,7 @@ const VolunteerCard = ( volunteer ) => {
           {Object.entries(volunteer)
             .filter(([filter, value]) => value !== '') // Exclude rows with empty values
             .filter(([filter, value]) => filter !== '_id')
+            .filter(([filter, value]) => filter !== 'positions')
             .map(([prop, value]) => (
               <div key={prop} className="filtered-item">
                 <span className="filter-label">{t(prop)}:</span>
