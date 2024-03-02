@@ -34,6 +34,8 @@ const UserPositions = ({ positions }) => {
             credentials: 'include',
             body: JSON.stringify(positions),
           });
+
+          console.log("fetching");
             
           if (response.ok) {
             const data = await response.json(); // Parse JSON response
@@ -55,7 +57,7 @@ const UserPositions = ({ positions }) => {
       };
     
       fetchData();
-    }, []);
+    }, [positions]);
 
 
     useEffect(() => {
