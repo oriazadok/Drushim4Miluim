@@ -1,0 +1,38 @@
+/* AboutUs.css */
+
+.AboutUs {
+    text-align: center;
+}
+
+.AboutUsHeader {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.image {
+    width: auto; /* Define the width of the image */
+    height: auto; /* Make the height of the image adjust automatically */
+    display: block;
+    margin: 0 auto;
+    margin-top: auto; /* Add top margin to separate the image from the rest of the content */
+    margin-bottom: auto;
+}
+
+.description {
+    color: white; /* Define the color of the description text */
+    text-align: center; /* Center the text */
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.link {
+    color: #a1a1a1; /* Define the color of the link */
+    display: block; /* Convert the link into a block to center it */
+    margin: 0 auto;
+    font-weight: bold
+}

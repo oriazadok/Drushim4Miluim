@@ -30,7 +30,8 @@ import VolunteerSearch from './pages/VolunteerSearch'
 import RecruiterPositions from './pages/RecruiterPositions'
 import VolunteerPositions from './pages/VolunteerPositions'
 
-
+import Positions from './pages/VolunteerPositions';
+import AboutUs from './pages/AboutUs';
 
 function App() {
   return (
@@ -58,6 +59,10 @@ function App() {
           <Route path="/volunteerSearch" element={<VolunteerSearch />} />
           <Route path="/volunteerPositions" element={<VolunteerPositions />} />
 
+          {/* Route that will be used by both the recruiter and the volunteer */}
+          <Route path="/positions" element={<Positions />} />
+
+          <Route path="/aboutUs" element={<AboutUs />} />
         </Routes>
       </Router>
     </I18nextProvider>
