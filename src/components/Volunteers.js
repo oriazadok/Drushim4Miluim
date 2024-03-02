@@ -10,8 +10,6 @@ import "../style/Volunteers.css"
 
 const Volunteers = ({ volunteersData }) => {
 
-  console.log("volunteersData: ", volunteersData);
-
   const { t } = useTranslation();   // translation
 
   const [selectedVolunteer, setSelectedVolunteer] = useState(null);
