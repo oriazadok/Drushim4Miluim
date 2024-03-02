@@ -1,6 +1,6 @@
 import '../style//AboutUs.css'; // Import the CSS file to add styles
 import { Link } from 'react-router-dom';
-
+import React from 'react';
 import tzav8 from '../images/tzav8.jpg'
 
 const AboutUs = () => {
