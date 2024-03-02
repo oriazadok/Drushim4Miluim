@@ -8,6 +8,7 @@ import "../style/AddPosition.css"
 const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
 
   const { t } = useTranslation();   // translation
+  const [loading, setLoading] = useState(false);
 
   const [positionData, setFormData] = useState({
     positionTitle: '',
@@ -28,6 +29,7 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const postData = {
         publisherId: id,
@@ -45,7 +47,8 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
         credentials: 'include', // Send cookies (credentials) with the request
         body: JSON.stringify(postData),
       });
-  
+      setLoading(false);
+
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -149,11 +152,16 @@ const AddPosition = ({ id, type, onPositionAdded, onCancel }) => {
           required
         ></textarea><br/>
 
-        
-
         <button type="submit">הוסף משרה</button>
         <button type="button" onClick={onCancel}>בטל</button>
+        {loading && (
+            <div className="loading-overlay">
+              <div className="loading-spinner"></div>
+            </div>
+          )}
+        
       </form>
+      
     </div>
   );
 };

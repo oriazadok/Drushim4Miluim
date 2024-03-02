@@ -97,6 +97,36 @@ const RecruiterPositions = () => {
     return obj;
 };
 
+// Make post request to get the data of the user
+  const getUserData = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/getUserData', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({_id: userData._id, type: userData.type}),
+      });
+
+      if (response.ok) {
+        const responseBody = await response.text();
+        if (responseBody.trim() === '') {
+          return;
+        }
+
+        const responseData = JSON.parse(responseBody);
+        localStorage.setItem('userData', JSON.stringify(responseData));
+        setUserData(responseData);
+        setPositions(responseData.positions);
+      } else {
+        console.error(`HTTP error! Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
 
   ////////////////////////////////////////////////////////////
   // those functions are related to the AddPositoins component
@@ -110,6 +140,7 @@ const RecruiterPositions = () => {
   // This function transferred to the AddPosition component to handle adding position
   const handlePositionAdded = () => {
     setShowAddPosition(!showAddPosition);
+    getUserData();
   };
 
   // This function transferred to the AddPosition component to handle cancle the adding position
@@ -165,6 +196,9 @@ const RecruiterPositions = () => {
               onCancel={handleCancelAddPosition}
             />
         )}
+
+            {/* <LastPositions positions={positions.slice(-5)} /> show the last 5 positions the recruiter post */}
+
 
         {/* Visibility of "Filter" button */}
         {!showFilter && (
