@@ -6,7 +6,7 @@ Project site: https://github.com/oriazadok/Drushim4Miluim
 
 #### Authors
 
-- [Oria Zadok](https://www.github.com/oriazadok)
+- [Oria Zadok](https://www.github.com/oriazadok)  
 - [Sagi Yosef Azulay](https://www.github.com/sagir567)
 - [Noy Rosenbaum](https://www.github.com/noyrosenbaum)
 - [Tal Tosiano](https://www.github.com/taltosiano)
