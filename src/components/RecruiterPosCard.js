@@ -114,6 +114,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
 
       if (response.ok) {
         const responseData = await response.json();
+        window.history.go(0); // רענון הדף
         // localStorage.setItem("userData", JSON.stringify(responseData));
         setEditMode(false);
         setEditSuccess(true);
@@ -140,9 +141,11 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
               credentials: 'include', // Send cookies (credentials) with the request
               body: JSON.stringify({_id: positionData._id, publisherId: positionData.publisherId}),
             });
-      
+            setLoading(false);
+
             if (response.ok) {
               const data = await response.json();
+              window.history.go(0); // page refresh
             } else {
               console.error(`HTTP error! Status: ${response.status}`);
             }
@@ -151,28 +154,28 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
           }
     };
 
-    const editPosition = async () => {
-        setEditMode(true);
-        // try {
-        //     const response = await fetch('http://localhost:3001/api/editPosition', {
-        //       method: 'POST',
-        //       headers: {
-        //         'Content-Type': 'application/json',
-        //       },
-        //       credentials: 'include', // Send cookies (credentials) with the request
-        //       body: JSON.stringify({_id: positionData._id, publisherId: positionData.publisherId}),
-        //     });
+    // const editPosition = async () => {
+    //     setEditMode(true);
+    //     // try {
+    //     //     const response = await fetch('http://localhost:3001/api/editPosition', {
+    //     //       method: 'POST',
+    //     //       headers: {
+    //     //         'Content-Type': 'application/json',
+    //     //       },
+    //     //       credentials: 'include', // Send cookies (credentials) with the request
+    //     //       body: JSON.stringify({_id: positionData._id, publisherId: positionData.publisherId}),
+    //     //     });
       
-        //     if (response.ok) {
-        //       const data = await response.json();
-        //     } else {
-        //       console.error(`HTTP error! Status: ${response.status}`);
-        //     }
-        //   } catch (error) {
-        //     console.error('Error:', error);
-        //   }
+    //     //     if (response.ok) {
+    //     //       const data = await response.json();
+    //     //     } else {
+    //     //       console.error(`HTTP error! Status: ${response.status}`);
+    //     //     }
+    //     //   } catch (error) {
+    //     //     console.error('Error:', error);
+    //     //   }
 
-    };
+    // };
 
     return (
         <div>
