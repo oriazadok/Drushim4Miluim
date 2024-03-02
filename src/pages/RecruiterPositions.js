@@ -12,6 +12,7 @@ import AddPosition from '../components/AddPosition';
 import PositionsFilter from '../components/PositionsFilter';
 import FilterData from '../components/FilterData';
 import UserPositions from '../components/UserPositions';
+import LastPositions from '../components/LastPositions'; 
 
 
 
