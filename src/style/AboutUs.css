@@ -16,13 +16,44 @@
 }
 
 .image {
-    width: auto; /* Define the width of the image */
-    height: auto; /* Make the height of the image adjust automatically */
+    width: 350px; /* Define the width of the image */
+    height: 350px; /* Make the height of the image adjust automatically */
     display: block;
     margin: 0 auto;
     margin-top: auto; /* Add top margin to separate the image from the rest of the content */
     margin-bottom: auto;
 }
+
+.aaron {
+    width: 350px; /* Define the width of the image */
+    height: 350px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .sagi {
+    width: 350px; /* Define the width of the image */
+    height: 350px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .elad {
+    width: 350px; /* Define the width of the image */
+    height: 350px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .tzadok {
+    width: 350px; /* Define the width of the image */
+    height: 350px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 
 .description {
     color: white; /* Define the color of the description text */

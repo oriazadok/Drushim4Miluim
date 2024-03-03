@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import tank from '../images/tank.jpg'
+//import tank from '../images/tank.jpg'
 import '../style//Home.css'; // Import the CSS file to add styles
 
 const Home = () => {
@@ -30,9 +30,10 @@ const Home = () => {
       הנכם מוזמנים להצטרף לקהילת "דרושים למילואים" הגדולה בארץ ובכך לתרום 
       לצבא החזק , מוסרי והאיכותי ביותר בעולם!!!</p>
       <Link to={userData && userData.type === "recruiters" ? "/recruiterHome" : userData.type === "volunteers" ? "/volunteerHome" : "/signin"}> 
-        <button>לאיזור האישי</button>
-      </Link><Link to={"/aboutUs"}> 
-        <button>Information</button>
+      <button className="custom-button">לאיזור האישי</button> {/* Aplica la clase "custom-button" */}
+      </Link>
+      <Link to={"/aboutUs"}> 
+        <button className="custom-button">קצת עלינו</button> {/* Aplica la clase "custom-button" */}
       </Link>
     </div>
   );
