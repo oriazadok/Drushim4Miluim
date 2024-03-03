@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PositionCard from './PositionCard';
+import '../style/Positions.css';
 
 const Positions = () => {
   const [positionsData, setPositionsData] = useState([]);

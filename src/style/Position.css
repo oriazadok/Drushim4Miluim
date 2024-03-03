@@ -1,0 +1,25 @@
+.position-container {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #cee2f6;
+    transition: transform 0.2s;
+  }
+  
+  .position-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  
+  .position-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #007bff;
+  }
+  
+  .position-location, .position-availability {
+    font-size: 16px;
+    color: #666;
+    margin: 5px 0;
+  }

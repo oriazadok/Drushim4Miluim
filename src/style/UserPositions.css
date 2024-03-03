@@ -1,0 +1,90 @@
+/* Style for the container */
+.user-positions-container {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+
+/* Style for the heading */
+.user-positions-heading {
+  color: #333;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Style for the volunteer list */
+.volunteer-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Style for the volunteer list item */
+.volunteer-list-item {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Style for the volunteer list item on hover */
+.volunteer-list-item:hover {
+  box-shadow: 0 4px 8px rgba(232, 9, 9, 0.2);
+}
+
+/* Style for the modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style for the modal content */
+.modal-content {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Style for the navigation buttons container */
+.navigation-buttons {
+  margin-top: 20px;
+}
+
+/* Style for the navigation buttons */
+.navigation-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Style for the navigation buttons on hover */
+.navigation-buttons button:hover {
+  background-color: #0056b3;
+}
+

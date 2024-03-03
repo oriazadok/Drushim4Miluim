@@ -1,7 +1,7 @@
 /* Style for the rectangle container */
 .position-card {
-  background-color: #dad8d8;  /* Background color */
-  border: 2px solid #8d8b8b; /* Rectangle border */
+  background-color: #e0f2f9;  /* Background color */
+  border: 2px solid #007bff; /* Rectangle border */
   border-radius: 4px;         /* Rounded borders */
   padding: 5px;               /* Internal padding */
   box-shadow: 0px 2px 4px rgba(12, 12, 12, 0.1); /* Shadow */

@@ -12,8 +12,9 @@ import AddPosition from '../components/AddPosition';
 import PositionsFilter from '../components/PositionsFilter';
 import FilterData from '../components/FilterData';
 import UserPositions from '../components/UserPositions';
-import LastPositions from '../components/LastPositions'; 
-
+import '../style/Volunteers.css';
+ import '../style/UserPositions.css';
+ import '../style/Positions.css';
 
 
 const RecruiterPositions = () => {
@@ -52,7 +53,6 @@ const RecruiterPositions = () => {
   }
 
   const getFilterPositions = async () => {
-    console.log("filtering");
     try {
 
       const query = {
@@ -77,8 +77,6 @@ const RecruiterPositions = () => {
         }
 
         const responseData = JSON.parse(responseBody);
-        console.log("res: ", responseData);
-        setPositions(responseData);
         
       } else {
         console.error(`HTTP error! Status: ${response.status}`);

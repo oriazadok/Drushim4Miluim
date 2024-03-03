@@ -1,0 +1,154 @@
+/* סגנון כללי */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+}
+
+/* כותרת העמוד */
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* קונטיינר לכפתורים */
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* סגנון כפתורים */
+.toggle-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+
+/* סגנון כפתור הוספת משרה ופילטר */
+.add-position, .filter-button {
+  background-color: #28a745;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-position:hover, .filter-button:hover {
+  background-color: #218838;
+}
+
+/* קונטיינר הכולל את כל העמוד */
+.container {
+  padding: 20px;
+}
+
+/* עיצוב עבור פרטי המשרה */
+.position-card {
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* עיצוב כפתורי עריכה ומחיקה */
+.edit-button, .delete-button {
+  background-color: #ffc107;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.delete-button {
+  background-color: #dc3545;
+}
+
+.edit-button:hover {
+  background-color: #e0a800;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+/* עיצוב לתיבת ההודעה בהצלחה */
+.success-message {
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* עיצוב עבור פרטי הפילטר */
+.filter-details {
+  background-color: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* עיצוב עבור הטופס הוספת משרה */
+.add-position-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.select-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* עיצוב כפתורי שליחה וביטול */
+.submit-button, .cancel-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  color: white;
+  margin-left: 10px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.cancel-button:hover {
+  background-color: #545b62;
+}

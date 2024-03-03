@@ -1,0 +1,95 @@
+/* Style for the container
+.recruiter-profile-container {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  } */
+  
+  /* Style for the heading */
+  .profile-heading {
+    color: #333;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the button container */
+  /* .button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  } */
+  
+  /* Style for the toggle button */
+  .toggle-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Style for the toggle button on hover */
+  .toggle-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for the FilterData container */
+  .filter-data-container {
+    margin: 20px 0;
+  }
+  
+  /* Style for the Volunteers container */
+  .volunteers-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 20px;
+  }
+  
+  /* Style for the Volunteer card */
+  .volunteer-card {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    max-width: 300px;
+  }
+  
+  /* Style for the Volunteer card title */
+  .volunteer-card h2 {
+    font-size: 30px; /* גודל הכתב */
+    font-weight: bold; /* כתב מודגש */
+    color: #010a15; /* הצבע של הטקסט, לדוגמה כחול */
+    display: flex; /* הפוך את הקונטיינר ל-flex container */
+    justify-content: center; /* ממרכז אופקית */
+    align-items: center; /* ממרכז אנכית */
+  }
+  
+  /* Style for the Volunteer card paragraphs */
+  .volunteer-card p {
+    margin: 0;
+    font-size: 16px;
+    color: #413e3e;
+  }
+  
+  /* Style for the Volunteer card links */
+  .volunteer-card a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  /* Style for the Volunteer card links on hover */
+  .volunteer-card a:hover {
+    color: #b42d16;
+  }

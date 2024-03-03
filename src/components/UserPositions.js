@@ -9,6 +9,8 @@ import { useTranslation } from 'react-i18next';
 import Position from './Position';
 import RecruiterPosCard from './RecruiterPosCard';
 import VolunteerPosCard from './VolunteerPosCard';
+import '../style/UserPositions.css';
+
 
 const UserPositions = ({ positions }) => {
 
@@ -23,7 +25,6 @@ const UserPositions = ({ positions }) => {
 
 
     useEffect(() => {
-
       const fetchData = async () => {
         try {
           const response = await fetch('http://localhost:3001/api/getUserPositionsData', {
@@ -34,9 +35,7 @@ const UserPositions = ({ positions }) => {
             credentials: 'include',
             body: JSON.stringify(positions),
           });
-
-          console.log("fetching");
-            
+    
           if (response.ok) {
             const data = await response.json(); // Parse JSON response
             if (data.length === 0) {
@@ -100,11 +99,10 @@ const UserPositions = ({ positions }) => {
     setSelectedPosition(null);
   };
 
-  console.log("poiu: ", positions)
-
+  console.log("ususussssss: ", userData);
+     
   return (
     <div>
-        <h2>UserPositions</h2>
         <div className="volunteer-list">
         {positionsData.length > 0 && positionsData.map((position) => (
           <div

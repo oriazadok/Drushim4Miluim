@@ -10,6 +10,10 @@ import Navigator from '../components/Navigator';
 import VolunteersFilter from '../components/VolunteersFilter';
 import FilterData from '../components/FilterData';
 import Volunteers from '../components/Volunteers';
+import '../style/RecruiterSearch.css';
+import '../style/Volunteers.css';
+
+
 
 const RecruiterSearch = () => {
   const { t } = useTranslation(); // translation

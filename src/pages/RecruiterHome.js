@@ -14,7 +14,10 @@ import LastPositions from '../components/LastPositions';
 import AddPosition from '../components/AddPosition';
 
 // For styling
-// import '../style/RecruiterHome.css';
+ import '../style/RecruiterHome.css';
+//  import '../style/Positions.css';
+ import '../style/Position.css';
+
 
 
 const RecruiterHome = () => {
@@ -99,7 +102,7 @@ const RecruiterHome = () => {
       {/* Navigation bar */}
       <Navigator />
       <h1>{t("hello")} {userData.name || "Guest"}!</h1>
-      <p>המשרות האחרונות שלי :</p>
+      <p className='bold-text'>המשרות האחרונות שלי :</p>
 
      
 

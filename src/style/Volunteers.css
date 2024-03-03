@@ -1,13 +1,16 @@
+/* Style for the volunteers container */
 .volunteers-container {
   max-width: 800px;
   margin: auto;
 }
 
+/* Style for the volunteer list */
 .volunteer-list {
   display: flex;
-  flex-direction: column; /* Updated to display items in a column */
+  flex-direction: column; /* Display items in a column */
 }
 
+/* Style for the volunteer list item */
 .volunteer-list-item {
   cursor: pointer;
   margin-bottom: 10px; /* Added margin-bottom to create spacing between items */
@@ -21,6 +24,7 @@
   }
 }
 
+/* Style for the modal */
 .modal {
   position: fixed;
   top: 0;
@@ -33,6 +37,7 @@
   align-items: center;
 }
 
+/* Style for the modal content */
 .modal-content {
   background-color: #fff;
   padding: 20px;

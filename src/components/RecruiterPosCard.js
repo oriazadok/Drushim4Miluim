@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Navigator from "../components/Navigator";
 // Translation
 import { useTranslation } from 'react-i18next';
+import '../style/RecruiterPosCard.css';
+
 
 
 const RecruiterPosCard = ( positionData, setPositionData ) => {
@@ -25,7 +27,7 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
     const [editSuccess, setEditSuccess] = useState(false);
 
     // useEffect(() => {
-    //     const storedPositionData = localStorage.getItem("positgiionData");
+    //     const storedPositionData = localStorage.getItem("positionData");
     //     const parsedPositionData = storedPositionData ? JSON.parse(storedPositionData) : null;
     
     //     if (parsedPositionData === null) {
