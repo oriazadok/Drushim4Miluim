@@ -1,5 +1,6 @@
 .position-container {
     border-radius: 8px;
+    /* border: 1px solid; */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     padding: 20px;
     margin-bottom: 20px;
