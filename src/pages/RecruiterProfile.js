@@ -11,6 +11,7 @@ const RecruiterProfile = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   const [editMode, setEditMode] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState(""); // State to hold phone number error
   const [updatedUserData, setUpdatedUserData] = useState({
     name: "",
     email: "",
@@ -32,11 +33,24 @@ const RecruiterProfile = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedUserData({ ...updatedUserData, [name]: value });
+      // Update the phone number and clear any previous error message
+      if (name === "phoneNumber") {
+        setUpdatedUserData({ ...updatedUserData, [name]: value });
+        setPhoneNumberError(""); // Clear phone number error when editing
+      } else {
+        setUpdatedUserData({ ...updatedUserData, [name]: value });
+      }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Validate phone number format
+    const phoneNumberPattern = /^05[0-9]{8}$/;
+    if (!phoneNumberPattern.test(updatedUserData.phoneNumber)) {
+      setPhoneNumberError(t("validPhone")); // Set error message
+      setTimeout(() => setPhoneNumberError(false), 3000);
+      return; // Exit function if phone number format is invalid
+    }
     try {
       const response = await fetch("http://localhost:3001/api/updateUserData", {
         method: "POST",
@@ -77,7 +91,26 @@ const RecruiterProfile = () => {
             <div>
               <p><strong>{t("name")}:</strong> {editMode ? <input type="text" name="name" value={updatedUserData.name} onChange={handleInputChange} /> : userData.name}</p>
               <p><strong>{t("email")}:</strong> {userData.email}</p>
-              <p><strong>{t("phone")}:</strong> {editMode ? <input type="tel" name="phoneNumber" value={updatedUserData.phoneNumber} onChange={handleInputChange} /> : userData.phoneNumber}</p>
+              <p>
+                <strong>{t("phone")}:</strong>{" "}
+                {editMode ? (
+                  <>
+                    <input
+                      type="tel"
+                      name="phoneNumber"
+                      pattern="05[0-9]{8}"
+                      value={updatedUserData.phoneNumber}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    {phoneNumberError && (
+                      <span className="error-message">{phoneNumberError}</span>
+                    )}
+                  </>
+                ) : (
+                  userData.phoneNumber
+                )}
+              </p>
             </div>
           )}
         </div>
