@@ -6,15 +6,17 @@ import { useTranslation } from 'react-i18next';
 import '../style/RecruiterPosCard.css';
 
 
+import VolunteersLister from './VolunteersLister';
+
 
 const RecruiterPosCard = ( positionData, setPositionData ) => {
-
-    console.log("possssssss: ", positionData);
 
     const { t } = useTranslation();   // translation
     const navigate = useNavigate();
     const [editMode, setEditMode] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [selectedVolunteers, setSelectedVolunteers] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const [updatedPositionData, setUpdatedPositionData] = useState({
         positionTitle: positionData.positionTitle,
         unitName: positionData.unitName,
@@ -109,9 +111,6 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
         }),
       });
 
-      console.log("cosomo")
-      console.log(response);
-
       setLoading(false);
 
       if (response.ok) {
@@ -156,6 +155,17 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
           }
     };
 
+    const handleVolunteersList = () => {
+      // Fetch or set the selected volunteers data here
+      setSelectedVolunteers(positionData);
+      setShowModal(true);
+    };
+  
+    const closeModal = () => {
+      setSelectedVolunteers(null);
+      setShowModal(false);
+    };
+
     // const editPosition = async () => {
     //     setEditMode(true);
     //     // try {
@@ -178,6 +188,8 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
     //     //   }
 
     // };
+
+    console.log("positionData.applayer: s: ", positionData.applayers);
 
     return (
         <div>
@@ -405,9 +417,19 @@ const RecruiterPosCard = ( positionData, setPositionData ) => {
             </div>
             {!editMode && <button onClick={() => setEditMode(true)}>{t("edit")}</button>}
             {editMode && <button onClick={update}>{t("update")}</button>}
+            <button onClick={handleVolunteersList}>{t('volunteersList')}</button>
             {loading && (
             <div className="loading-overlay">
               <div className="loading-spinner"></div>
+            </div>
+          )}
+
+          {/* Modal */}
+          {showModal && (
+            <div className="modal" onClick={closeModal}>
+              <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                <VolunteersLister positionsIds={positionData.applayers} />
+              </div>
             </div>
           )}
             <button onClick={deletePosition}>{t('delete')}</button>

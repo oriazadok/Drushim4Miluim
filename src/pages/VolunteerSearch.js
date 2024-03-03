@@ -28,11 +28,12 @@ const VolunteerSearch = () => {
     if (parsedUserData === null) {
       navigate("/signin");
     }
-
+    console.log("parsedUserData: ", parsedUserData);
     setUserData(parsedUserData);
-    setPositions(parsedUserData.positions);
     
   }, []); // Only include navigate as a dependency
+
+  
 
   const getFilterPositions = async () => {
     try {
@@ -59,6 +60,7 @@ const VolunteerSearch = () => {
         }
 
         const responseData = JSON.parse(responseBody);
+        setPositions(responseData);
         
       } else {
         console.error(`HTTP error! Status: ${response.status}`);
@@ -80,6 +82,11 @@ const VolunteerSearch = () => {
     return obj;
 };
 
+useEffect(() => {
+  getFilterPositions();
+  
+}, []); 
+
 
 
 // This function transferred to the Filter to handle filtering
@@ -88,12 +95,6 @@ const handleFilter = () => {
   getFilterPositions();
 };
 
-
-
-
-
-
- 
 
   // This function transferred to the Filter to save the filter's data
   const handleFilterChange = (filterName, value) => {

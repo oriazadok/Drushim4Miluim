@@ -46,6 +46,8 @@ const Positions = () => {
     if (parsedUserData === null) {
       navigate("/signin");
     }
+
+    // console.log()
     
     setUserData(parsedUserData);
     setPositions(parsedUserData.positions);

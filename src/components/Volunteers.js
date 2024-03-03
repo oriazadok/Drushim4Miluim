@@ -22,6 +22,10 @@ const Volunteers = ({ volunteersData }) => {
     setSelectedVolunteer(null);
   };
 
+  if(volunteersData.length === 0) {
+    return(<div>למשרה זו עדיין לא נרשמו מתנדבים...</div>);
+}
+
   return (
     <div className="volunteers-container">
       <h2>{t("volunteers")}</h2>
