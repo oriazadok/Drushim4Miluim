@@ -7,26 +7,23 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Add text-align property */
 }
 
 .profile-details {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap; /* Add flex-wrap property */
+  flex-wrap: wrap;
 }
 
-.profile-details div {
-  width: 48%; /* Adjust as needed */
-  text-align: center; /* Add text-align property */
-}
 
 .profile-details p {
   margin-bottom: 10px;
-  text-align: center; /* Add text-align property */
 }
 
 h2 {
   color: #333;
   text-align: center; /* Add text-align property */
+}
+.error-message {
+  margin-top: 5px; /* Adjust the value as needed */
+  display: block; /* Ensures the error message appears on a new line */
 }

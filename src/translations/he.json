@@ -73,5 +73,7 @@
     "cancel": "בטל",
     "positionCandidates": "מועמדים למשרה",
     "apply": "הגש מועמדות",
-    "volunteersList": "רשימת מתנדבים"
+    "volunteersList": "רשימת מתנדבים",
+    "validPhone": "הכנס מספר טלפון לפי הפורמט, לדוגמה: 0541234567",
+    "validReleaseDate": "הכנס תאריך שחרור לפי הפורמט, לדוגמה: 1970-01-01"
 }
