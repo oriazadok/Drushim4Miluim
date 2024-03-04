@@ -20,17 +20,28 @@ This project was developed in order to help recruiters and volunteers for reserv
 We all were called to the reserves and understood the need for such platform.  
 If you want to volunteer, you can enter your details and start looking for your best match position.  
 If you are a recruiter came and check if in our Database you can find a reserve soldier you need.
+Our project have the option for recruiters to post positions and seeking for available volunteers .
+The volunteers can check and filter for available positions and apply.
+
+This is how we help the both sides to match easily.
+
 Enjoy and feel free to contact us about any issue.
 
+For more information : [Project presentation](https://www.github.com/Drushim4Miluim.pptx)
 
+## 💡 Gallery: 💡  
 
-## 💡 Gallery: 💡 
+### Home Page : ### 
+![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/homepage.jpg)
 
-<!-- ![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/tank.jpg)
-![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/tank.jpg)
-![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/tank.jpg)
-![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/tank.jpg)
-![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/tank.jpg)  -->
+### Recruiter Home Page : ###
+![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/recruiterHome.jpg)
+
+### Recruiter Search for volunteers : ###
+![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/recruiterSearch.jpg)
+
+## About Us :
+![](https://github.com/oriazadok/Drushim4Miluim/blob/master/src/images/aboutus.jpg)
 
 
 ## 💡 Diagrams: 💡
@@ -67,7 +78,11 @@ Enjoy and feel free to contact us about any issue.
  - [React JS](https://www.geeksforgeeks.org/react-tutorial/)
  - [Git](https://www.geeksforgeeks.org/introduction-to-github/)
 
- Once you have these prerequisites installed, you can follow these steps to download a React project from Github and run it on your computer: 
+ Once you have these prerequisites installed, you can follow these steps to download a React project from Github and run it on your computer:  
+
+ First you need to run our server at the following link : 
+ https://github.com/oriazadok/miluim_server 
+ The intructions to run the server found at the Readme.
 
  Clone the repository :
  ```
