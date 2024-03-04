@@ -19,7 +19,7 @@ Project site: https://github.com/oriazadok/Drushim4Miluim
 This project was developed in order to help recruiters and volunteers for reserve(miluim) of the IDF find each other.  
 We all were called to the reserves and understood the need for such platform.  
 If you want to volunteer, you can enter your details and start looking for your best match position.  
-If you are a recruiter came and check if in our Database you can find a reserve soldier you need. 
+If you are a recruiter came and check if in our Database you can find a reserve soldier you need.  
 Our project have the option for recruiters to post positions and seeking for available volunteers .
 The volunteers can check and filter for available positions and apply.
 
@@ -27,7 +27,7 @@ This is how we help the both sides to match easily.
 
 Enjoy and feel free to contact us about any issue.
 
-For more information : [Project presentation]((https://github.com/oriazadok/Drushim4Miluim/blob/master/Drushim4Miluim.pptx))
+For more information : [Project presentation](https://github.com/oriazadok/Drushim4Miluim/blob/master/Drushim4Miluim.pptx)
 
 ## 💡 Gallery: 💡  
 
