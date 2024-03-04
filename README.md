@@ -80,9 +80,9 @@ For more information : [Project presentation](https://github.com/oriazadok/Drush
 
  Once you have these prerequisites installed, you can follow these steps to download a React project from Github and run it on your computer:  
 
- First you need to run our server at the following link : 
- https://github.com/oriazadok/miluim_server 
- The intructions to run the server found at the Readme.
+ First you need to run our server at the following link :   
+ https://github.com/oriazadok/miluim_server    
+ The intructions to run the server found at the Readme.   
 
  Clone the repository :
  ```
